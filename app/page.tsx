@@ -1,15 +1,23 @@
+import Image from "next/image";
+
 const CTA_HREF = "#aplicar";
 
 const points = [
-  "Potencial de valor en efectivo",
-  "Protección para tu familia",
-  "Enfoque en retiro",
+  "Obtén hasta $850,000",
+  "Beneficios para tu familia",
+  "Accede a tu dinero cuando lo necesites",
 ];
 
 const steps = [
   "Aplica",
-  "Responde la evaluación inicial",
-  "Revisa si puedes avanzar por los beneficios del plan",
+  "Responde unas preguntas rápidas",
+  "Descubre si calificas para los beneficios",
+];
+
+const qualifiers = [
+  "Sin examen médico",
+  "Sin costos ocultos",
+  "Aprobación en 60 segundos",
 ];
 
 function CtaButton({
@@ -54,11 +62,11 @@ export default function Home() {
 
           <div className="space-y-5">
             <h1 className="max-w-[11ch] text-5xl font-semibold leading-[0.92] tracking-[-0.06em] text-white sm:max-w-none sm:text-6xl">
-              Aplica para recibir más dinero en tu retiro.
+              Aplica y recibe más dinero para tu retiro.
             </h1>
             <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-              Descubre si puedes aplicar por los beneficios de un plan basado en
-              Seguro de Vida tipo IUL.
+              Ahorra y haz crecer tu dinero con interés compuesto indexado y
+              cero riesgo garantizado por contrato.
             </p>
           </div>
 
@@ -75,10 +83,10 @@ export default function Home() {
 
           <div className="space-y-4 pt-1">
             <CtaButton className="flex w-full bg-ri-green text-ri-ink hover:bg-[#52e79e]">
-              Aplicar por beneficios
+              Solicitar el beneficio
             </CtaButton>
             <p className="text-sm leading-6 text-slate-400">
-              Evaluación inicial corta.
+              Solo 5 preguntas rápidas
             </p>
           </div>
         </div>
@@ -88,7 +96,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-md px-5 py-10 sm:max-w-xl sm:px-6 md:max-w-2xl lg:max-w-3xl lg:px-8">
           <div className="space-y-5">
             <h2 className="text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-              Cómo funciona
+              Cómo aplicar
             </h2>
             <div className="grid gap-3">
               {steps.map((step, index) => (
@@ -111,31 +119,57 @@ export default function Home() {
 
       <section
         id="aplicar"
-        className="border-t border-white/8 bg-ri-ink pb-28 sm:pb-12"
+        className="border-t border-white/8 bg-ri-ink pb-12"
       >
         <div className="mx-auto w-full max-w-md px-5 py-10 sm:max-w-xl sm:px-6 md:max-w-2xl lg:max-w-3xl lg:px-8">
           <div className="space-y-4">
             <h2 className="max-w-xl text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-              Revisa si calificas para los beneficios del plan.
+              Cuanto dinero puedo acceder con un IUL
             </h2>
             <p className="max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
-              La elegibilidad depende de factores como edad, salud, perfil y
-              condiciones del producto.
+              Muchas familias están asegurando su futuro y el de su familia con
+              una póliza indexada que protege y ayuda a construir acceso a
+              dinero para el retiro.
             </p>
-            <div className="pt-1">
-              <CtaButton className="bg-ri-blue text-white hover:bg-ri-navy">
-                Quiero aplicar
-              </CtaButton>
+            <div className="grid gap-2 pt-1">
+              {qualifiers.map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center text-ri-green">
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4 fill-none stroke-current stroke-[2.5]"
+                    >
+                      <path
+                        d="M5 12.5 9.2 16.5 19 7.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <p className="text-sm leading-6 text-slate-200">{item}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-center pt-4 pr-6">
+              <div className="flex w-full flex-col items-center gap-3">
+                <Image
+                  src="/regulado-y-aprobado-img.png"
+                  alt="Regulado y aprobado"
+                  width={220}
+                  height={72}
+                  className="h-auto w-[180px] grayscale brightness-0 invert opacity-55"
+                />
+                <p className="w-full text-center text-[10px] font-light leading-4 text-white/70">
+                  Disclaimer: Beneficios sujetos a elegibilidad, edad, salud,
+                  condiciones de la póliza y aprobación de la aseguradora. Esto
+                  no garantiza resultados ni montos específicos.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-ri-ink/96 p-4 backdrop-blur sm:hidden">
-        <CtaButton className="flex w-full bg-ri-green text-ri-ink hover:bg-[#52e79e]">
-          Aplicar por beneficios
-        </CtaButton>
-      </div>
     </main>
   );
 }

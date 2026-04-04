@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 /**
  * Portable copy of /iul-v2 for reuse in another Next.js app.
@@ -17,8 +17,19 @@
  */
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+
+const PRELANDING_SOURCE_SESSION_KEY = "ri-prelanding-source";
+
+function getSurveyKeyFromPath(pathname: string) {
+  const normalized = pathname.replace(/\/+$/, "") || "/survey";
+  return normalized.replace(/^\/+/, "").replace(/\//g, "-") || "survey";
+}
+
+function buildSurveyPageValue(prelandingKey: string, surveyKey: string) {
+  return `${prelandingKey || "directo"}-${surveyKey}`;
+}
 
 const trustBadges = [
   { icon: "/best-money-assets/tax-free.svg", text: "Retiro libre de impuestos" },
@@ -28,27 +39,27 @@ const trustBadges = [
 
 const introBenefits = [
   {
-    icon: "📈",
+    icon: "ðŸ“ˆ",
     title: "Ahorro con Interés Compuesto",
     description: "Maximiza tus fondos con rendimientos de hasta el 9.5% anual.",
   },
   {
-    icon: "🚫",
+    icon: "ðŸš«",
     title: "Retiros Libres de Impuestos",
     description: "Accede a tu dinero para el retiro sin pagar impuestos al IRS.",
   },
   {
-    icon: "🏦",
+    icon: "ðŸ¦",
     title: "Liquidez Inmediata",
     description: "Solicita préstamos usando tu póliza como garantía cuando quieras.",
   },
   {
-    icon: "🛡️",
+    icon: "ðŸ›¡ï¸",
     title: "Protección Contra Caídas",
     description: "Tu ahorro está seguro (Piso 0%) aunque el mercado caiga.",
   },
   {
-    icon: "🏥",
+    icon: "ðŸ¥",
     title: "Beneficios en Vida",
     description: "Usa tus fondos en caso de una enfermedad crítica o emergencia grave.",
   },
@@ -797,10 +808,14 @@ export default function IulV2ExportPage({
   initialGeo?: InitialGeo;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const surveyKey = useMemo(() => getSurveyKeyFromPath(pathname), [pathname]);
   const [currentStep, setCurrentStep] = useState<FunnelStep>("age");
   const [slideDirection, setSlideDirection] = useState<"forward" | "backward">("forward");
   const [panelKey, setPanelKey] = useState(0);
   const [isTransitioningOut, setIsTransitioningOut] = useState(false);
+  const [isReturningToPrelanding, setIsReturningToPrelanding] = useState(false);
+  const [prelandingSource, setPrelandingSource] = useState("");
   const [answers, setAnswers] = useState<FunnelAnswers>(() => {
     const initialZip =
       initialGeo?.source === "zippopotam" &&
@@ -827,6 +842,9 @@ export default function IulV2ExportPage({
     initialGeo?.location || emptyAnswers.locationText
   );
   const [isLookingUpZip, setIsLookingUpZip] = useState(false);
+  const [zipCanAutoAdvance, setZipCanAutoAdvance] = useState(
+    !/^\d{5}$/.test(initialGeo?.zipCode ?? "")
+  );
   const [hasHydratedSavedData, setHasHydratedSavedData] = useState(false);
   const [hasLoadedGeo, setHasLoadedGeo] = useState(Boolean(initialGeo));
   const [phoneError, setPhoneError] = useState("");
@@ -836,13 +854,17 @@ export default function IulV2ExportPage({
   const [isSubmittingLead, setIsSubmittingLead] = useState(false);
   const [leadEventNonce, setLeadEventNonce] = useState<string | null>(null);
   const transitionTimeoutRef = useRef<number | null>(null);
+  const prelandingNavigationTimeoutRef = useRef<number | null>(null);
   const trackedLeadNonceRef = useRef<string | null>(null);
 
   const isSuccessPage = currentStep === "success";
   const isQuestionnaire = true;
   const isHomePage = pathname === "/";
-  const pageValue = isHomePage ? "home" : pathname;
-  const storageKeyValue = useMemo(() => `best-money-funnel-v1:${pageValue}`, [pageValue]);
+  const pageValue = useMemo(
+    () => buildSurveyPageValue(prelandingSource, surveyKey),
+    [prelandingSource, surveyKey]
+  );
+  const storageKeyValue = useMemo(() => `best-money-funnel-v1:${surveyKey}`, [surveyKey]);
   const successHash = "#gracias";
   const recommendedAgeOption = answers.ageGroup ? "" : "35 a 44";
   const recommendedGoalOption = answers.insuranceGoal ? "" : "Ahorrar e invertir";
@@ -852,29 +874,41 @@ export default function IulV2ExportPage({
   const resolvedUsState = stateOptions.includes(answers.state) ? answers.state : "";
   const hasResolvedZipCode = /^\d{5}$/.test(answers.resolvedZipCode);
   const shouldAskZipCode = !hasResolvedZipCode;
-  const visibleQuestionSteps = shouldAskZipCode
-    ? (["age", "goal", "state", "name", "phone"] as FunnelStep[])
-    : (["age", "goal", "name", "phone"] as FunnelStep[]);
   const [progressIncludesZip, setProgressIncludesZip] = useState(shouldAskZipCode);
-  const progressQuestionSteps = progressIncludesZip
+  const questionSteps = progressIncludesZip
     ? (["age", "goal", "state", "name", "phone"] as FunnelStep[])
     : (["age", "goal", "name", "phone"] as FunnelStep[]);
-  const currentQuestionIndex = progressQuestionSteps.indexOf(currentStep);
+  const currentQuestionIndex = questionSteps.indexOf(currentStep);
   const progress =
     currentQuestionIndex >= 0
-      ? ((currentQuestionIndex + 1) / progressQuestionSteps.length) * 100
+      ? ((currentQuestionIndex + 1) / questionSteps.length) * 100
       : null;
   const animationClass = isTransitioningOut
-    ? "animate-[survey-question-out_0.18s_cubic-bezier(0.4,0,1,1)_forwards]"
-    : "animate-[survey-question-in_0.42s_cubic-bezier(0.22,0.61,0.36,1)]";
+    ? "animate-[survey-question-out_0.22s_cubic-bezier(0.4,0,0.2,1)_forwards]"
+    : "animate-[survey-question-in_0.34s_cubic-bezier(0.22,1,0.36,1)_forwards]";
+  const trustSealClass = isTransitioningOut
+    ? "opacity-0"
+    : "opacity-70 delay-150";
 
   const normalizedPhone = useMemo(() => answers.phoneNumber.replace(/\D/g, ""), [answers.phoneNumber]);
 
   useEffect(() => {
-    if (currentStep === "age" || currentStep === "goal" || currentStep === "state") {
-      setProgressIncludesZip(shouldAskZipCode);
+    if (shouldAskZipCode) {
+      setProgressIncludesZip(true);
     }
-  }, [currentStep, shouldAskZipCode]);
+  }, [shouldAskZipCode]);
+
+  useEffect(() => {
+    try {
+      const storedSource =
+        window.sessionStorage.getItem(PRELANDING_SOURCE_SESSION_KEY) || "";
+
+      setPrelandingSource(storedSource);
+      window.sessionStorage.removeItem(PRELANDING_SOURCE_SESSION_KEY);
+    } catch {
+      setPrelandingSource("");
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -896,6 +930,9 @@ export default function IulV2ExportPage({
         setAnswers((prev) => ({ ...prev, ...parsed.answers }));
         if (parsed.answers.locationText) {
           setDefaultLocationText(parsed.answers.locationText);
+        }
+        if (parsed.answers.resolvedZipCode && /^\d{5}$/.test(parsed.answers.resolvedZipCode)) {
+          setZipCanAutoAdvance(false);
         }
       }
 
@@ -1057,9 +1094,27 @@ export default function IulV2ExportPage({
   }, [answers.zipCode, defaultLocationText, hasLoadedGeo, isHomePage]);
 
   useEffect(() => {
+    if (currentStep !== "state" || !zipCanAutoAdvance || isLookingUpZip) return;
+    if (!/^\d{5}$/.test(answers.resolvedZipCode)) return;
+    if (answers.zipCode !== answers.resolvedZipCode) return;
+
+    setZipCanAutoAdvance(false);
+    transitionTo("name", "forward");
+  }, [
+    answers.resolvedZipCode,
+    answers.zipCode,
+    currentStep,
+    isLookingUpZip,
+    zipCanAutoAdvance,
+  ]);
+
+  useEffect(() => {
     return () => {
       if (transitionTimeoutRef.current !== null) {
         window.clearTimeout(transitionTimeoutRef.current);
+      }
+      if (prelandingNavigationTimeoutRef.current !== null) {
+        window.clearTimeout(prelandingNavigationTimeoutRef.current);
       }
     };
   }, []);
@@ -1121,9 +1176,9 @@ export default function IulV2ExportPage({
   ]);
 
   useEffect(() => {
-    if (currentStep !== "state" || shouldAskZipCode) return;
+    if (currentStep !== "state" || shouldAskZipCode || progressIncludesZip) return;
     transitionTo("name", "forward");
-  }, [currentStep, shouldAskZipCode]);
+  }, [currentStep, progressIncludesZip, shouldAskZipCode]);
 
   function transitionTo(nextStep: FunnelStep, direction: "forward" | "backward") {
     setSlideDirection(direction);
@@ -1141,14 +1196,37 @@ export default function IulV2ExportPage({
   }
 
   function goBack() {
-    if (currentStep === "name" && !shouldAskZipCode) {
-      transitionTo("goal", "backward");
+    const currentIndex = questionSteps.indexOf(currentStep);
+    if (currentIndex <= 0) {
+      if (isReturningToPrelanding) return;
+
+      const targetPath = prelandingSource ? `/${prelandingSource === "home" ? "" : prelandingSource}` : "/";
+      setIsReturningToPrelanding(true);
+      setIsTransitioningOut(true);
+
+      prelandingNavigationTimeoutRef.current = window.setTimeout(() => {
+        const queryString = window.location.search;
+        router.push(queryString ? `${targetPath}${queryString}` : targetPath, {
+          scroll: false,
+        });
+      }, 190);
+
       return;
     }
 
-    const currentIndex = stepOrder.indexOf(currentStep);
-    if (currentIndex <= 0) return;
-    transitionTo(stepOrder[currentIndex - 1], "backward");
+    if (currentStep === "name" && progressIncludesZip) {
+      setZipCanAutoAdvance(false);
+      setAnswers((prev) => ({
+        ...prev,
+        zipCode: prev.resolvedZipCode || prev.zipCode,
+      }));
+    }
+
+    if (currentStep === "state") {
+      setZipError("");
+    }
+
+    transitionTo(questionSteps[currentIndex - 1], "backward");
   }
 
   function startQuestionnaire() {
@@ -1177,6 +1255,7 @@ export default function IulV2ExportPage({
 
     setZipError("");
     setIsLookingUpZip(true);
+    setProgressIncludesZip(true);
 
     try {
       const response = await fetch(`/api/zip/${zipCode}`, {
@@ -1201,6 +1280,7 @@ export default function IulV2ExportPage({
         state: data.state || prev.state,
       }));
 
+      setZipCanAutoAdvance(false);
       transitionTo("name", "forward");
     } catch (error) {
       const message =
@@ -1287,14 +1367,40 @@ export default function IulV2ExportPage({
           ageGroup: answers.ageGroup,
           insuranceGoal: answers.insuranceGoal,
           state: resolvedState,
-          firstName: answers.firstName.trim(),
-          lastName: answers.lastName.trim(),
-          phoneNumber: normalizedPhone,
-          email: answers.email.trim(),
-          locationText: resolvedLocationText,
+            firstName: answers.firstName.trim(),
+            lastName: answers.lastName.trim(),
+            phoneCountry: answers.phoneCountry,
+            phoneNumber: normalizedPhone,
+            email: answers.email.trim(),
+            locationText: resolvedLocationText,
           zipCode: isHomePage ? undefined : resolvedZipCode,
         }).filter(([, value]) => value !== "" && value != null)
       );
+
+      const queryParams = (() => {
+        if (typeof window === "undefined") return {} as Record<string, string | string[]>;
+
+        const params = new URLSearchParams(window.location.search);
+        const collected: Record<string, string | string[]> = {};
+
+        params.forEach((value, key) => {
+          const existing = collected[key];
+
+          if (existing == null) {
+            collected[key] = value;
+            return;
+          }
+
+          if (Array.isArray(existing)) {
+            existing.push(value);
+            return;
+          }
+
+          collected[key] = [existing, value];
+        });
+
+        return collected;
+      })();
 
       const response = await fetch("/api/lead", {
         method: "POST",
@@ -1304,6 +1410,9 @@ export default function IulV2ExportPage({
           answers: cleanedAnswers,
           meta: {
             deviceId: getOrCreateDeviceId(),
+            pageUrl: typeof window === "undefined" ? "" : window.location.href,
+            referrer: typeof document === "undefined" ? "" : document.referrer,
+            queryParams,
           },
         }),
       });
@@ -1343,12 +1452,12 @@ export default function IulV2ExportPage({
           className="h-[8px] rounded-full bg-[var(--brand)] transition-[width] duration-300"
           style={{ width: `${progress}%` }}
         />
-        {progressQuestionSteps.slice(1).map((_, index) => (
+        {questionSteps.slice(1).map((_, index) => (
           <span
             key={index}
             aria-hidden="true"
             className="absolute top-0 h-full w-px bg-white/55"
-            style={{ left: `${((index + 1) / progressQuestionSteps.length) * 100}%` }}
+            style={{ left: `${((index + 1) / questionSteps.length) * 100}%` }}
           />
         ))}
       </div>
@@ -1658,7 +1767,7 @@ export default function IulV2ExportPage({
             {renderProgress()}
             <div className="inline-flex h-9 w-9 items-center justify-center text-[14px] font-semibold tracking-[-0.02em] text-[#6b7280] md:w-[70px] md:justify-end">
               {currentQuestionIndex >= 0
-                ? `${currentQuestionIndex + 1}/${progressQuestionSteps.length}`
+                ? `${currentQuestionIndex + 1}/${questionSteps.length}`
                 : ""}
             </div>
           </div>
@@ -1668,7 +1777,7 @@ export default function IulV2ExportPage({
               {currentStep === "age" && "¿En qué grupo de edad estás?"}
               {currentStep === "goal" &&
                 "Cuéntame, ¿qué te gustaría lograr con un seguro de vida?"}
-              {currentStep === "state" && "Cual es tu ZIP code?"}
+              {currentStep === "state" && "¿Cuál es tu ZIP code?"}
               {currentStep === "name" && "¿Cuál es tu nombre completo?"}
               {currentStep === "phone" &&
                 "¿A qué número te enviamos tu cotización personalizada?"}
@@ -1702,7 +1811,11 @@ export default function IulV2ExportPage({
                   key={option}
                   type="button"
                   onClick={() =>
-                    handleDirectChoice("insuranceGoal", option, shouldAskZipCode ? "state" : "name")
+                    handleDirectChoice(
+                      "insuranceGoal",
+                      option,
+                      progressIncludesZip ? "state" : "name"
+                    )
                   }
                   className={optionButtonClass(
                     answers.insuranceGoal === option,
@@ -1819,18 +1932,10 @@ export default function IulV2ExportPage({
           {currentStep === "phone" ? (
             <div className={`mt-8 flex w-full max-w-[460px] flex-col gap-4 md:mt-10 ${animationClass}`}>
               <div className="flex gap-3">
-                <select
-                  value={answers.phoneCountry}
-                  onChange={(event) =>
-                    setAnswers((prev) => ({
-                      ...prev,
-                      phoneCountry: event.target.value,
-                    }))
-                  }
-                  className="h-[58px] min-w-[106px] rounded-[16px] border border-[#9c9c9c] bg-white px-4 text-[17px] text-[#101820] outline-none transition focus:border-[var(--brand)]"
-                >
-                  <option value="US">US +1</option>
-                </select>
+                <div className="flex h-[58px] min-w-[106px] items-center gap-2 rounded-[16px] border border-[#9c9c9c] bg-white px-4 text-[17px] text-[#101820]">
+                  <UsFlagIcon className="h-[18px] w-[25px] shrink-0" />
+                  <span>US +1</span>
+                </div>
 
                 <input
                   id="phone-number"
@@ -1954,6 +2059,18 @@ export default function IulV2ExportPage({
               </p>
             </div>
           ) : null}
+
+          <div
+            className={`mt-10 flex justify-center pr-5 transition-opacity duration-700 ease-in-out md:pr-7 ${trustSealClass}`}
+          >
+            <Image
+              src="/regulado-y-aprobado-img.png"
+              alt="Regulado y aprobado"
+              width={220}
+              height={72}
+              className="h-auto w-[168px] md:w-[188px]"
+            />
+          </div>
         </div>
       </div>
     );
@@ -1972,6 +2089,30 @@ export default function IulV2ExportPage({
     >
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap");
+
+        @keyframes survey-question-in {
+          from {
+            opacity: 0;
+            transform: translate3d(5px, 0, 0);
+          }
+
+          to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        @keyframes survey-question-out {
+          from {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            opacity: 0;
+            transform: translate3d(-5px, 0, 0);
+          }
+        }
       `}</style>
       <header className="border-b border-black/6 bg-white/96 shadow-[0_4px_20px_rgba(18,31,53,0.18)] backdrop-blur-sm">
         <div className="mx-auto flex h-[60px] w-full max-w-[1200px] items-center justify-between px-4 md:relative md:justify-center">
@@ -2014,5 +2155,23 @@ export default function IulV2ExportPage({
         </>
       )}
     </main>
+  );
+}
+
+function UsFlagIcon({ className = "h-[1em] w-[1em]" }: { className?: string }) {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 28 20" className={className}>
+      <rect width="28" height="20" rx="3" fill="#fff" />
+      <path
+        d="M0 0h28v2H0zm0 4h28v2H0zm0 8h28v2H0zm0 4h28v2H0zm0 8h28v2H0z"
+        fill="#B22234"
+      />
+      <rect width="12" height="10" rx="2" fill="#3C3B6E" />
+      <path
+        d="M2.2 2.2h1v1h-1zm2.1 0h1v1h-1zm2.1 0h1v1h-1zm2.1 0h1v1h-1zM3.25 4.2h1v1h-1zm2.1 0h1v1h-1zm2.1 0h1v1h-1zM2.2 6.2h1v1h-1zm2.1 0h1v1h-1zm2.1 0h1v1h-1zm2.1 0h1v1h-1zM3.25 8.2h1v1h-1zm2.1 8.2h1v1h-1zm2.1-8.2h1v1h-1z"
+        fill="#fff"
+      />
+      <rect width="28" height="20" rx="3" fill="none" stroke="#d1d5db" />
+    </svg>
   );
 }

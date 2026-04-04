@@ -1,6 +1,11 @@
-import Image from "next/image";
+"use client";
 
-const CTA_HREF = "#aplicar";
+import Image from "next/image";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
+
+const SURVEY_HREF = "/survey";
+const PRELANDING_SOURCE_SESSION_KEY = "ri-prelanding-source";
 
 const points = [
   "Obtén hasta $850,000",
@@ -23,23 +28,69 @@ const qualifiers = [
 function CtaButton({
   children,
   className = "",
+  onClick,
+  disabled = false,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
+  onClick: () => void;
+  disabled?: boolean;
 }) {
   return (
-    <a
-      href={CTA_HREF}
-      className={`inline-flex min-h-13 items-center justify-center rounded-full px-6 py-3 text-center text-sm font-semibold tracking-[0.16em] uppercase transition-colors ${className}`}
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`inline-flex min-h-13 items-center justify-center rounded-full px-6 py-3 text-center text-sm font-semibold tracking-[0.16em] uppercase transition-colors disabled:pointer-events-none disabled:opacity-90 ${className}`}
     >
       {children}
-    </a>
+    </button>
   );
 }
 
 export default function Home() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isExitingToSurvey, setIsExitingToSurvey] = useState(false);
+  const navigationTimeoutRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    router.prefetch(SURVEY_HREF);
+
+    return () => {
+      if (navigationTimeoutRef.current !== null) {
+        window.clearTimeout(navigationTimeoutRef.current);
+      }
+    };
+  }, [router]);
+
+  function goToSurvey() {
+    if (isExitingToSurvey) return;
+
+    const source = pathname === "/" ? "home" : pathname.replace(/^\/+/, "").replace(/\//g, "-") || "home";
+
+    try {
+      window.sessionStorage.setItem(PRELANDING_SOURCE_SESSION_KEY, source);
+    } catch {
+      // Ignore session storage issues in restricted browsers.
+    }
+
+    setIsExitingToSurvey(true);
+
+    navigationTimeoutRef.current = window.setTimeout(() => {
+      const queryString = window.location.search;
+      router.push(queryString ? `${SURVEY_HREF}${queryString}` : SURVEY_HREF, {
+        scroll: false,
+      });
+    }, 280);
+  }
+
   return (
-    <main className="bg-ri-ink text-white">
+    <main
+      className={`bg-ri-ink text-white transition-[opacity,transform] duration-250 ease-out ${
+        isExitingToSurvey ? "translate-x-[-12px] opacity-0" : "translate-x-0 opacity-100"
+      }`}
+    >
       <section className="mx-auto w-full max-w-md px-5 pb-24 pt-8 sm:max-w-xl sm:px-6 md:max-w-2xl lg:max-w-3xl lg:px-8 lg:pb-16">
         <div className="space-y-8">
           <div className="space-y-3">
@@ -82,7 +133,11 @@ export default function Home() {
           </div>
 
           <div className="space-y-4 pt-1">
-            <CtaButton className="flex w-full bg-ri-green text-ri-ink hover:bg-[#52e79e]">
+            <CtaButton
+              onClick={goToSurvey}
+              disabled={isExitingToSurvey}
+              className="flex w-full bg-ri-green text-ri-ink hover:bg-[#52e79e]"
+            >
               Solicitar el beneficio
             </CtaButton>
             <p className="text-sm leading-6 text-slate-400">

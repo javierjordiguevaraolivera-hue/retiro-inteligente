@@ -50,3 +50,14 @@ body {
   background: rgba(135, 219, 255, 0.28);
   color: #04111f;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: #101820;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  caret-color: #101820;
+  transition: background-color 9999s ease-in-out 0s;
+}

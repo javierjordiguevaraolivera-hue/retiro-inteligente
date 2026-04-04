@@ -143,6 +143,7 @@ export async function POST(request: NextRequest) {
     lastName: cleanString(answers.lastName),
     email: cleanString(answers.email),
     locationText: cleanString(answers.locationText),
+    zipCode: cleanString(answers.zipCode),
     phoneNumber: cleanString(answers.phoneNumber),
     validation: {
       phoneCountry: cleanString(answers.phoneCountry) || "US",

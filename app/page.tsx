@@ -41,7 +41,7 @@ function CtaButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`inline-flex min-h-13 items-center justify-center rounded-full px-6 py-3 text-center text-sm font-semibold tracking-[0.16em] uppercase transition-colors disabled:pointer-events-none disabled:opacity-90 ${className}`}
+      className={`inline-flex min-h-13 items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-sm font-extrabold tracking-[0.16em] uppercase transition-colors disabled:pointer-events-none disabled:opacity-90 ${className}`}
     >
       {children}
     </button>
@@ -138,7 +138,15 @@ export default function Home() {
               disabled={isExitingToSurvey}
               className="flex w-full bg-ri-green text-ri-ink hover:bg-[#52e79e]"
             >
-              Solicitar el beneficio
+              <span>Solicitar el beneficio</span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-4 w-4 fill-none stroke-current stroke-[2.4]"
+              >
+                <path d="M5 12h14" strokeLinecap="round" />
+                <path d="m13 6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </CtaButton>
             <p className="text-sm leading-6 text-slate-400">
               Solo 5 preguntas rápidas

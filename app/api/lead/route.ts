@@ -92,12 +92,10 @@ function cleanObjectRecord(value: unknown) {
 }
 
 export async function POST(request: NextRequest) {
-  const webhookUrls = [
-    process.env.LEAD_WEBHOOK_URL_1,
-    process.env.LEAD_WEBHOOK_URL_2,
-  ].filter((value): value is string => Boolean(value));
+  const primaryWebhookUrl = process.env.WEBHOOK_1;
+  const secondaryWebhookUrl = process.env.WEBHOOK_2;
 
-  if (webhookUrls.length === 0) {
+  if (!primaryWebhookUrl) {
     return Response.json(
       { error: "Missing lead webhook configuration" },
       { status: 500 }
@@ -159,27 +157,43 @@ export async function POST(request: NextRequest) {
     metaCookies,
   };
 
-  const responses = await Promise.allSettled(
-    webhookUrls.map((url) =>
-      fetch(url, {
+  const [primaryResult, secondaryResult] = await Promise.allSettled(
+    [
+      fetch(primaryWebhookUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
         cache: "no-store",
-      })
-    )
+      }),
+      secondaryWebhookUrl
+        ? fetch(secondaryWebhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            cache: "no-store",
+          })
+        : Promise.resolve(null),
+    ]
   );
 
-  const failedWebhook = responses.find(
-    (result) => result.status === "rejected" || !result.value.ok
-  );
+  const primaryOk =
+    primaryResult.status === "fulfilled" &&
+    primaryResult.value !== null &&
+    primaryResult.value.ok;
+  const secondaryOk =
+    secondaryResult.status === "fulfilled" &&
+    (secondaryResult.value === null || secondaryResult.value.ok);
 
-  if (failedWebhook) {
+  if (!primaryOk) {
     return Response.json(
       {
-        error: "Lead webhook delivery failed",
+        error: "Primary lead webhook delivery failed",
+        primaryOk: false,
+        secondaryOk,
       },
       { status: 502 }
     );
@@ -187,6 +201,8 @@ export async function POST(request: NextRequest) {
 
   return Response.json({
     ok: true,
-    deliveredTo: webhookUrls.length,
+    primaryOk: true,
+    secondaryOk,
+    deliveredTo: secondaryWebhookUrl ? (secondaryOk ? 2 : 1) : 1,
   });
 }

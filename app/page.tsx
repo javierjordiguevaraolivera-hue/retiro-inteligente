@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { MetaPixelPageView } from "@/app/components/meta-pixel-pageview";
 
 const SURVEY_HREF = "/survey";
 const PRELANDING_SOURCE_SESSION_KEY = "ri-prelanding-source";
@@ -91,6 +92,7 @@ export default function Home() {
         isExitingToSurvey ? "translate-x-[-12px] opacity-0" : "translate-x-0 opacity-100"
       }`}
     >
+      <MetaPixelPageView />
       <section className="mx-auto w-full max-w-md px-5 pb-24 pt-8 sm:max-w-xl sm:px-6 md:max-w-2xl lg:max-w-3xl lg:px-8 lg:pb-16">
         <div className="space-y-8">
           <div className="space-y-3">

@@ -1148,7 +1148,7 @@ export default function IulV2ExportPage({
     trackedLeadNonceRef.current = leadEventNonce;
     void (async () => {
       try {
-        const metaPixelId = trackingWindow.__metaPixelId || "980723860687387";
+        const metaPixelId = trackingWindow.__metaPixelId || "959650579980718";
         const deviceId = getOrCreateDeviceId();
         const { userData, customData } = await buildMetaLeadTrackingData({
           answers,

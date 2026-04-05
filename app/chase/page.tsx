@@ -328,8 +328,6 @@ export default function ChasePage() {
               </button>
             ))}
           </nav>
-
-          <div className={styles.homeIndicator} />
       </div>
     </main>
   );

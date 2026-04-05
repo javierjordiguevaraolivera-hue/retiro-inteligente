@@ -587,7 +587,7 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
   return (
     <>
       <section className={styles.wealthHero}>
-        <h1 className={styles.wealthTitle}>Wealth Plan</h1>
+        <h1 className={styles.wealthTitle}>INDEXED IUL SAVING</h1>
       </section>
 
       <section className={styles.wealthContent} data-chase-content-start>
@@ -628,8 +628,8 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
         </div>
       </section>
 
-      <nav className={`${styles.bottomNav} ${styles.bottomNavWide}`} aria-label="Bottom Navigation">
-        {wealthBottomTabs.map((tab) => (
+      <nav className={styles.bottomNav} aria-label="Bottom Navigation">
+        {overviewBottomTabs.map((tab) => (
           <button
             key={tab.label}
             type="button"

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./page.module.css";
 
 const quickActions = [
@@ -98,6 +101,50 @@ function ChevronRight() {
   );
 }
 
+function EyeIcon({ hidden }: { hidden: boolean }) {
+  if (hidden) {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.eyeIcon}>
+        <path
+          d="M3.8 4.8 19.2 20.2"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="1.8"
+        />
+        <path
+          d="M10.2 6.1A10.3 10.3 0 0 1 12 6c4.7 0 8.1 3.2 9.4 6-0.6 1.3-1.5 2.6-2.7 3.6M7.2 8C5.5 9.1 4.2 10.7 3.4 12c1.2 2.8 4.6 6 9.4 6 1.2 0 2.3-0.2 3.3-0.5"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.8"
+        />
+        <path
+          d="M9.8 9.7A3.3 3.3 0 0 1 15 12.4"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeWidth="1.8"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.eyeIcon}>
+      <path
+        d="M2.9 12c1.4-2.9 4.8-6 9.1-6s7.7 3.1 9.1 6c-1.4 2.9-4.8 6-9.1 6s-7.7-3.1-9.1-6Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="12" r="3.1" fill="none" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
 function WalletIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.actionIcon}>
@@ -189,7 +236,20 @@ function BottomTabIcon({ icon }: { icon: (typeof bottomTabs)[number]["icon"] }) 
   }
 }
 
+function maskBalance(balance: string) {
+  return balance.replace(/\d/g, "•");
+}
+
 export default function ChasePage() {
+  const [visibleBalances, setVisibleBalances] = useState<Record<string, boolean>>({});
+
+  const toggleBalance = (accountName: string) => {
+    setVisibleBalances((current) => ({
+      ...current,
+      [accountName]: !current[accountName],
+    }));
+  };
+
   return (
     <main className={styles.page}>
       <div className={styles.screen}>
@@ -255,8 +315,24 @@ export default function ChasePage() {
                     </div>
 
                     <div className={styles.accountBalanceWrap}>
-                      <span className={styles.accountBalance}>{account.balance}</span>
-                      <span className={styles.accountPause}>II</span>
+                      <button
+                        type="button"
+                        className={styles.eyeButton}
+                        aria-label={
+                          visibleBalances[account.name]
+                            ? "Ocultar monto de la cuenta"
+                            : "Mostrar monto de la cuenta"
+                        }
+                        aria-pressed={Boolean(visibleBalances[account.name])}
+                        onClick={() => toggleBalance(account.name)}
+                      >
+                        <EyeIcon hidden={!visibleBalances[account.name]} />
+                      </button>
+                      <span className={styles.accountBalance}>
+                        {visibleBalances[account.name]
+                          ? account.balance
+                          : maskBalance(account.balance)}
+                      </span>
                     </div>
                   </div>
                 ))}

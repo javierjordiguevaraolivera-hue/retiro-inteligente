@@ -65,7 +65,13 @@ function SearchIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.inlineIcon}>
       <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-      <path d="m16 16 4.2 4.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      <path
+        d="m16 16 4.2 4.2"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.8"
+      />
     </svg>
   );
 }
@@ -80,7 +86,13 @@ function BellIcon() {
         strokeWidth="1.8"
         strokeLinejoin="round"
       />
-      <path d="M10.4 17.4a1.8 1.8 0 0 0 3.2 0" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+      <path
+        d="M10.4 17.4a1.8 1.8 0 0 0 3.2 0"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="1.8"
+      />
     </svg>
   );
 }
@@ -88,7 +100,13 @@ function BellIcon() {
 function PlusIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.plusIcon}>
-      <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+      <path
+        d="M12 5v14M5 12h14"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
@@ -96,7 +114,14 @@ function PlusIcon() {
 function ChevronRight() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.chevron}>
-      <path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+      <path
+        d="m9 6 6 6-6 6"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
     </svg>
   );
 }
@@ -148,7 +173,16 @@ function EyeIcon({ hidden }: { hidden: boolean }) {
 function WalletIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.actionIcon}>
-      <rect x="3.5" y="6.5" width="17" height="11" rx="2.6" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <rect
+        x="3.5"
+        y="6.5"
+        width="17"
+        height="11"
+        rx="2.6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
       <path d="M7 10.2h10.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
       <circle cx="16.6" cy="12.7" r="1.1" fill="currentColor" />
     </svg>
@@ -159,8 +193,23 @@ function DepositIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.actionIcon}>
       <path d="M5 16.5h14" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
-      <path d="m8 13 5.9-6.1 2.1 2.1L10.1 15H8v-2Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="1.7" />
-      <rect x="4.5" y="5.5" width="15" height="13" rx="2.8" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="m8 13 5.9-6.1 2.1 2.1L10.1 15H8v-2Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.7"
+      />
+      <rect
+        x="4.5"
+        y="5.5"
+        width="15"
+        height="13"
+        rx="2.8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
     </svg>
   );
 }
@@ -169,9 +218,23 @@ function TransferIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.actionIcon}>
       <path d="M5 8h12" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-      <path d="m13.5 4.8 3.7 3.2-3.7 3.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+      <path
+        d="m13.5 4.8 3.7 3.2-3.7 3.2"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
       <path d="M19 16H7" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
-      <path d="m10.5 19.2-3.7-3.2 3.7-3.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+      <path
+        d="m10.5 19.2-3.7-3.2 3.7-3.2"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
     </svg>
   );
 }
@@ -179,7 +242,13 @@ function TransferIcon() {
 function BillIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.actionIcon}>
-      <path d="M7 4.5h10v15l-2-1.2-2 1.2-2-1.2-2 1.2-2-1.2V4.5Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="1.7" />
+      <path
+        d="M7 4.5h10v15l-2-1.2-2 1.2-2-1.2-2 1.2-2-1.2V4.5Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.7"
+      />
       <path d="M9 9h6M9 12h6M9 15h4" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.7" />
     </svg>
   );
@@ -188,7 +257,13 @@ function BillIcon() {
 function TabAccountsIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.tabIcon}>
-      <path d="M6.5 7.2 12 3l5.5 4.2v10.4H6.5V7.2Z" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="1.8" />
+      <path
+        d="M6.5 7.2 12 3l5.5 4.2v10.4H6.5V7.2Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
       <path d="M9.2 11h5.6M9.2 14.2h5.6" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
     </svg>
   );
@@ -206,7 +281,16 @@ function TabPayIcon() {
 function TabTransactionsIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.tabIcon}>
-      <rect x="5.5" y="5.5" width="13" height="13" rx="2.6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <rect
+        x="5.5"
+        y="5.5"
+        width="13"
+        height="13"
+        rx="2.6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
       <path d="M8.5 10.2h7M8.5 13.2h7M8.5 16.2h4.4" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
     </svg>
   );
@@ -237,7 +321,8 @@ function BottomTabIcon({ icon }: { icon: (typeof bottomTabs)[number]["icon"] }) 
 }
 
 function maskBalance(balance: string) {
-  return balance.replace(/\d/g, "•");
+  const digits = balance.replace(/\D/g, "").length;
+  return `$${"•".repeat(Math.max(digits, 6))}`;
 }
 
 export default function ChasePage() {
@@ -253,157 +338,160 @@ export default function ChasePage() {
   return (
     <main className={styles.page}>
       <div className={styles.screen}>
-          <section className={styles.hero}>
-            <div className={styles.topTools}>
-              <div className={styles.searchBar}>
-                <span>Search in the app</span>
-                <SearchIcon />
-              </div>
+        <section className={styles.hero}>
+          <div className={styles.topTools}>
+            <div className={styles.searchBar}>
+              <span>Search in the app</span>
+              <SearchIcon />
+            </div>
 
-              <div className={styles.topActions}>
-                <button type="button" className={styles.iconButton} aria-label="Notifications">
-                  <BellIcon />
-                  <span className={styles.badge}>1</span>
+            <div className={styles.topActions}>
+              <button type="button" className={styles.iconButton} aria-label="Notifications">
+                <BellIcon />
+                <span className={styles.badge}>1</span>
+              </button>
+
+              <div className={styles.avatar} aria-label="Alex">
+                A
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.greetingRow}>
+            <div className={styles.greeting}>
+              <ChaseLogo />
+              <span>Hi, Alex</span>
+            </div>
+
+            <button type="button" className={styles.plusButton} aria-label="Add">
+              <PlusIcon />
+            </button>
+          </div>
+
+          <div className={styles.quickActions}>
+            {quickActions.map((item) => (
+              <article key={`${item.title}-${item.subtitle}`} className={styles.quickActionCard}>
+                <button type="button" className={styles.dismissButton} aria-label="Dismiss">
+                  ×
                 </button>
-
-                <div className={styles.avatar} aria-label="Alex">
-                  A
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.greetingRow}>
-              <div className={styles.greeting}>
-                <ChaseLogo />
-                <span>Hi, Alex</span>
-              </div>
-
-              <button type="button" className={styles.plusButton} aria-label="Add">
-                <PlusIcon />
-              </button>
-            </div>
-
-            <div className={styles.quickActions}>
-              {quickActions.map((item) => (
-                <article key={`${item.title}-${item.subtitle}`} className={styles.quickActionCard}>
-                  <button type="button" className={styles.dismissButton} aria-label="Dismiss">
-                    ×
-                  </button>
-                  <QuickActionIcon icon={item.icon} />
-                  <p className={styles.quickActionText}>
-                    <span>{item.title}</span>
-                    <span>{item.subtitle}</span>
-                  </p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className={styles.content} data-chase-content-start>
-            <article className={styles.accountsCard}>
-              <h2 className={styles.sectionTitle}>Accounts (2)</h2>
-
-              <div className={styles.accountsList}>
-                {accounts.map((account, index) => (
-                  <div key={account.name} className={index === 0 ? styles.accountRow : `${styles.accountRow} ${styles.accountRowBorder}`}>
-                    <div className={styles.accountMeta}>
-                      <div className={styles.accountNameWrap}>
-                        <span className={styles.accountName}>{account.name}</span>
-                        <ChevronRight />
-                      </div>
-                      <span className={styles.accountSuffix}>{account.suffix}</span>
-                    </div>
-
-                    <div className={styles.accountBalanceWrap}>
-                      <button
-                        type="button"
-                        className={styles.eyeButton}
-                        aria-label={
-                          visibleBalances[account.name]
-                            ? "Ocultar monto de la cuenta"
-                            : "Mostrar monto de la cuenta"
-                        }
-                        aria-pressed={Boolean(visibleBalances[account.name])}
-                        onClick={() => toggleBalance(account.name)}
-                      >
-                        <EyeIcon hidden={!visibleBalances[account.name]} />
-                      </button>
-                      <span className={styles.accountBalance}>
-                        {visibleBalances[account.name]
-                          ? account.balance
-                          : maskBalance(account.balance)}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button type="button" className={styles.openAccountButton}>
-                <span className={styles.openPlus}>+</span>
-                <span>Open an Account</span>
-              </button>
-            </article>
-
-            <section className={styles.offerSection}>
-              <div className={styles.offerHeader}>
-                <div>
-                  <h3 className={styles.offerTitle}>Chase Offers</h3>
-                  <p className={styles.offerSubtitle}>Add deals, shop and get money back.</p>
-                </div>
-
-                <button type="button" className={styles.offerLink}>
-                  <span>All offers</span>
-                  <ChevronRight />
-                </button>
-              </div>
-
-              <div className={styles.offerCards}>
-                {offerCards.map((card) => (
-                  <article
-                    key={card.title}
-                    className={`${styles.offerCard} ${
-                      card.accent === "red"
-                        ? styles.offerRed
-                        : card.accent === "dark"
-                          ? styles.offerDark
-                          : styles.offerLight
-                    }`}
-                  >
-                    <span className={styles.offerBadge}>%</span>
-                    <span className={styles.offerText}>{card.title}</span>
-                  </article>
-                ))}
-              </div>
-            </section>
-
-            <div className={styles.infoList}>
-              {menuItems.map((item) => (
-                <article key={item.title} className={styles.infoCard}>
-                  <div className={styles.infoCopy}>
-                    <h3 className={styles.infoTitle}>{item.title}</h3>
-                    {item.description ? <p className={styles.infoDescription}>{item.description}</p> : null}
-                  </div>
-                  <ChevronRight />
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <nav className={styles.bottomNav} aria-label="Bottom Navigation">
-            {bottomTabs.map((tab) => (
-              <button
-                key={tab.label}
-                type="button"
-                className={tab.active ? `${styles.tab} ${styles.tabActive}` : styles.tab}
-              >
-                <span className={styles.tabIconWrap}>
-                  <BottomTabIcon icon={tab.icon} />
-                  {tab.active ? <span className={styles.tabDot} /> : null}
-                </span>
-                <span>{tab.label}</span>
-              </button>
+                <QuickActionIcon icon={item.icon} />
+                <p className={styles.quickActionText}>
+                  <span>{item.title}</span>
+                  <span>{item.subtitle}</span>
+                </p>
+              </article>
             ))}
-          </nav>
+          </div>
+        </section>
+
+        <section className={styles.content} data-chase-content-start>
+          <article className={styles.accountsCard}>
+            <h2 className={styles.sectionTitle}>Accounts (2)</h2>
+
+            <div className={styles.accountsList}>
+              {accounts.map((account, index) => (
+                <div
+                  key={account.name}
+                  className={index === 0 ? styles.accountRow : `${styles.accountRow} ${styles.accountRowBorder}`}
+                >
+                  <div className={styles.accountMeta}>
+                    <div className={styles.accountNameWrap}>
+                      <span className={styles.accountName}>{account.name}</span>
+                      <ChevronRight />
+                    </div>
+                    <span className={styles.accountSuffix}>{account.suffix}</span>
+                  </div>
+
+                  <div className={styles.accountBalanceWrap}>
+                    <button
+                      type="button"
+                      className={styles.eyeButton}
+                      aria-label={
+                        visibleBalances[account.name]
+                          ? "Ocultar monto de la cuenta"
+                          : "Mostrar monto de la cuenta"
+                      }
+                      aria-pressed={Boolean(visibleBalances[account.name])}
+                      onClick={() => toggleBalance(account.name)}
+                    >
+                      <EyeIcon hidden={!visibleBalances[account.name]} />
+                    </button>
+                    <span className={styles.accountBalance}>
+                      {visibleBalances[account.name]
+                        ? account.balance
+                        : maskBalance(account.balance)}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <button type="button" className={styles.openAccountButton}>
+              <span className={styles.openPlus}>+</span>
+              <span>Open an Account</span>
+            </button>
+          </article>
+
+          <section className={styles.offerSection}>
+            <div className={styles.offerHeader}>
+              <div>
+                <h3 className={styles.offerTitle}>Chase Offers</h3>
+                <p className={styles.offerSubtitle}>Add deals, shop and get money back.</p>
+              </div>
+
+              <button type="button" className={styles.offerLink}>
+                <span>All offers</span>
+                <ChevronRight />
+              </button>
+            </div>
+
+            <div className={styles.offerCards}>
+              {offerCards.map((card) => (
+                <article
+                  key={card.title}
+                  className={`${styles.offerCard} ${
+                    card.accent === "red"
+                      ? styles.offerRed
+                      : card.accent === "dark"
+                        ? styles.offerDark
+                        : styles.offerLight
+                  }`}
+                >
+                  <span className={styles.offerBadge}>%</span>
+                  <span className={styles.offerText}>{card.title}</span>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <div className={styles.infoList}>
+            {menuItems.map((item) => (
+              <article key={item.title} className={styles.infoCard}>
+                <div className={styles.infoCopy}>
+                  <h3 className={styles.infoTitle}>{item.title}</h3>
+                  {item.description ? <p className={styles.infoDescription}>{item.description}</p> : null}
+                </div>
+                <ChevronRight />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <nav className={styles.bottomNav} aria-label="Bottom Navigation">
+          {bottomTabs.map((tab) => (
+            <button
+              key={tab.label}
+              type="button"
+              className={tab.active ? `${styles.tab} ${styles.tabActive}` : styles.tab}
+            >
+              <span className={styles.tabIconWrap}>
+                <BottomTabIcon icon={tab.icon} />
+                {tab.active ? <span className={styles.tabDot} /> : null}
+              </span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </nav>
       </div>
     </main>
   );

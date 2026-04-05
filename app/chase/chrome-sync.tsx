@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const TOP_COLOR = "#2550aa";
+const DEFAULT_TOP_COLOR = "#2550aa";
 const CONTENT_COLOR = "#f8f8f8";
 
 function setThemeColor(color: string) {
@@ -28,10 +28,12 @@ export default function ChaseChromeSync() {
 
     const updateChrome = () => {
       const contentStart = document.querySelector<HTMLElement>("[data-chase-content-start]");
+      const screen = document.querySelector<HTMLElement>("[data-chase-top-color]");
+      const topColor = screen?.dataset.chaseTopColor || DEFAULT_TOP_COLOR;
       const nextColor =
         contentStart && contentStart.getBoundingClientRect().top <= 10
           ? CONTENT_COLOR
-          : TOP_COLOR;
+          : topColor;
 
       if (nextColor === currentColor) {
         return;

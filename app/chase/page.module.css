@@ -471,8 +471,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  height: 72px;
-  padding: 8px 18px 0;
+  min-height: calc(72px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 18px calc(env(safe-area-inset-bottom, 0px) + 4px);
   background: #fff;
   border-top: 1px solid #edf0f5;
   display: grid;

@@ -174,12 +174,12 @@
 }
 
 .quickActionCard {
-  flex: 0 0 calc((100% - 30px) / 3.6);
-  min-height: 138px;
+  flex: 0 0 calc((100% - 30px) / 3.15);
+  min-height: 116px;
   border-radius: 14px;
   background: #fff;
   color: #294278;
-  padding: 16px 16px 14px;
+  padding: 14px 14px 12px;
   box-shadow: 0 8px 18px rgba(22, 43, 85, 0.08);
   position: relative;
   scroll-snap-align: start;
@@ -203,7 +203,7 @@
 }
 
 .quickActionText {
-  margin-top: 24px;
+  margin-top: 18px;
   display: grid;
   gap: 1px;
   font-size: 13px;
@@ -700,8 +700,8 @@
   }
 
   .quickActionCard {
-    flex-basis: calc((100% - 24px) / 3.6);
-    min-height: 132px;
+    flex-basis: calc((100% - 24px) / 3.12);
+    min-height: 112px;
     padding-inline: 12px;
   }
 

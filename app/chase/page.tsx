@@ -25,6 +25,8 @@ const accounts = [
   },
 ] as const;
 
+const indexedIulBalance = accounts[0].balance;
+
 const offerCards = [
   { title: "Office\nDepot", accent: "red" },
   { title: "Spotify", accent: "dark" },
@@ -358,33 +360,33 @@ function maskBalance(balance: string) {
 function NetWorthChart() {
   return (
     <div className={styles.chartFrame}>
-      <svg aria-hidden="true" viewBox="0 0 300 220" className={styles.chartSvg}>
-        <path d="M26 188H254" fill="none" stroke="#1c1c1c" strokeWidth="1.2" />
+      <svg aria-hidden="true" viewBox="0 0 340 220" className={styles.chartSvg}>
+        <path d="M26 188H264" fill="none" stroke="#1c1c1c" strokeWidth="1.2" />
         <path
-          d="M30 172 L70 166 L92 144 L110 134 L126 110 L142 124 L160 132 L162 165 L178 175 L194 168 L206 174 L218 154 L228 182 L244 178 L256 154 L264 98 L276 62"
+          d="M30 176 L66 173 L88 166 L108 158 L126 144 L144 148 L160 140 L174 146 L188 156 L202 152 L216 142 L228 150 L238 136 L250 126 L262 102 L274 72 L286 48"
           fill="none"
           stroke="#4b7fbc"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="3"
         />
-        <line x1="276" y1="62" x2="276" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
-        <circle cx="276" cy="62" r="4.5" fill="#2f6fb8" />
-        <rect x="236" y="28" width="84" height="24" rx="3" fill="#585858" />
-        <text x="278" y="44" textAnchor="middle" className={styles.chartTooltip}>
-          Feb 20 $19,733.58
+        <line x1="286" y1="48" x2="286" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
+        <circle cx="286" cy="48" r="4.5" fill="#2f6fb8" />
+        <rect x="222" y="16" width="108" height="24" rx="3" fill="#585858" />
+        <text x="276" y="32" textAnchor="middle" className={styles.chartTooltip}>
+          Feb 20 $850,235.89
         </text>
-        <text x="286" y="72" className={styles.chartAxisLabel}>
-          $20.0K
+        <text x="298" y="58" className={styles.chartAxisLabel}>
+          $850.2K
         </text>
-        <text x="286" y="113" className={styles.chartAxisLabel}>
-          $16.6K
+        <text x="298" y="97" className={styles.chartAxisLabel}>
+          $640.0K
         </text>
-        <text x="286" y="152" className={styles.chartAxisLabel}>
-          $9.4K
+        <text x="298" y="136" className={styles.chartAxisLabel}>
+          $420.0K
         </text>
-        <text x="286" y="190" className={styles.chartAxisLabel}>
-          $2.1K
+        <text x="298" y="175" className={styles.chartAxisLabel}>
+          $210.0K
         </text>
         <text x="30" y="212" className={styles.chartDateLabel}>
           Nov 21
@@ -594,14 +596,14 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
         <article className={styles.wealthCard}>
           <div className={styles.wealthTabs}>
             <button type="button" className={styles.wealthTab}>
-              Monthly spending
+              Monthly earning
             </button>
             <button type="button" className={`${styles.wealthTab} ${styles.wealthTabActive}`}>
               Net worth history
             </button>
           </div>
 
-          <div className={styles.wealthBalance}>$19,733.58</div>
+          <div className={styles.wealthBalance}>{indexedIulBalance}</div>
 
           <div className={styles.wealthSubline}>
             <span>Your net worth as of 2/20/2024</span>

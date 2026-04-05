@@ -61,6 +61,21 @@ const wealthActions = [
   { label: "Update your\npriorities", icon: "update" },
 ] as const;
 
+const wealthMenuItems = [
+  {
+    title: "Projected retirement income",
+    description: "Review how your indexed growth may support future withdrawals.",
+  },
+  {
+    title: "Tax-advantaged strategy",
+    description: "See how policy value may be accessed efficiently over time.",
+  },
+  {
+    title: "Protected cash value",
+    description: "Track steady accumulation designed around long-term planning.",
+  },
+] as const;
+
 const wealthBottomTabs = [
   { label: "Accounts", active: false, icon: "accounts" },
   { label: "Pay & transfer", active: false, icon: "paytransfer" },
@@ -464,17 +479,17 @@ function OverviewScreen({
               <span className={styles.badge}>1</span>
             </button>
 
-            <div className={styles.avatar} aria-label="Alex">
-              A
-            </div>
+              <div className={styles.avatar} aria-label="Alex">
+                A
+              </div>
           </div>
         </div>
 
         <div className={styles.greetingRow}>
-          <div className={styles.greeting}>
-            <ChaseLogo inverted />
-            <span>Hi, Alex</span>
-          </div>
+            <div className={styles.greeting}>
+              <ChaseLogo inverted />
+              <span>Hi, Alex</span>
+            </div>
 
           <button type="button" className={styles.plusButton} aria-label="Add">
             <PlusIcon />
@@ -676,6 +691,18 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
               </span>
               <span className={styles.wealthActionLabel}>{action.label}</span>
             </button>
+          ))}
+        </div>
+
+        <div className={styles.wealthInfoList}>
+          {wealthMenuItems.map((item) => (
+            <article key={item.title} className={styles.infoCard}>
+              <div className={styles.infoCopy}>
+                <h3 className={styles.infoTitle}>{item.title}</h3>
+                <p className={styles.infoDescription}>{item.description}</p>
+              </div>
+              <ChevronRight />
+            </article>
           ))}
         </div>
       </section>

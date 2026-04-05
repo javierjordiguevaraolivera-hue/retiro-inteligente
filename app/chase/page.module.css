@@ -353,6 +353,12 @@
   padding: 18px 10px 12px;
 }
 
+.wealthInfoList {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
 .wealthActionButton {
   border: 0;
   background: transparent;

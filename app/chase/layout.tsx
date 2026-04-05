@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
+import ChaseChromeSync from "./chrome-sync";
 
 export const viewport: Viewport = {
   themeColor: "#2550aa",
@@ -11,5 +12,10 @@ type ChaseLayoutProps = {
 };
 
 export default function ChaseLayout({ children }: ChaseLayoutProps) {
-  return children;
+  return (
+    <>
+      <ChaseChromeSync />
+      {children}
+    </>
+  );
 }

@@ -239,7 +239,7 @@ export default function ChasePage() {
             </div>
           </section>
 
-          <section className={styles.content}>
+          <section className={styles.content} data-chase-content-start>
             <article className={styles.accountsCard}>
               <h2 className={styles.sectionTitle}>Accounts (2)</h2>
 

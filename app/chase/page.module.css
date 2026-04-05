@@ -20,6 +20,18 @@
     linear-gradient(180deg, #2550aa 0%, #1d47a4 28%, #1b49aa 47%, #f8f8f8 47.2%, #f8f8f8 100%);
 }
 
+.screen::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--chase-top-chrome, #2550aa);
+  pointer-events: none;
+  z-index: 40;
+}
+
 .hero {
   padding: 22px 16px 0;
   overflow: hidden;

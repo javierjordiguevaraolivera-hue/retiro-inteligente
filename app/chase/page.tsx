@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const quickActions = [
@@ -384,6 +384,11 @@ function NetWorthChart() {
         <line x1="30" y1="188" x2="286" y2="188" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
         <line x1="30" y1="24" x2="30" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
         <line x1="30" y1="188" x2="286" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="30" y1="188" x2="30" y2="194" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="94" y1="188" x2="94" y2="194" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="158" y1="188" x2="158" y2="194" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="222" y1="188" x2="222" y2="194" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="286" y1="188" x2="286" y2="194" stroke="#1c1c1c" strokeWidth="1.2" />
         <path
           d="M30 188 L52 187 L74 185 L96 181 L118 174 L140 163 L162 149 L184 131 L206 109 L228 84 L248 63 L266 52 L286 48"
           fill="none"
@@ -416,13 +421,19 @@ function NetWorthChart() {
           $0
         </text>
         <text x="30" y="212" className={styles.chartDateLabel}>
-          Nov 21
+          Year 1
         </text>
-        <text x="128" y="212" className={styles.chartDateLabel}>
-          Jan 4
+        <text x="94" y="212" textAnchor="middle" className={styles.chartDateLabel}>
+          Year 2
         </text>
-        <text x="229" y="212" className={styles.chartDateLabel}>
-          Feb 17
+        <text x="158" y="212" textAnchor="middle" className={styles.chartDateLabel}>
+          Year 3
+        </text>
+        <text x="222" y="212" textAnchor="middle" className={styles.chartDateLabel}>
+          Year 4
+        </text>
+        <text x="286" y="212" textAnchor="end" className={styles.chartDateLabel}>
+          Year 5
         </text>
       </svg>
     </div>
@@ -613,6 +624,18 @@ function OverviewScreen({
 }
 
 function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
+  const [todayLabel, setTodayLabel] = useState("04/05/2026");
+
+  useEffect(() => {
+    setTodayLabel(
+      new Intl.DateTimeFormat("en-US", {
+        month: "2-digit",
+        day: "2-digit",
+        year: "numeric",
+      }).format(new Date()),
+    );
+  }, []);
+
   return (
     <>
       <section className={styles.wealthHero}>
@@ -633,7 +656,7 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
           <div className={styles.wealthBalance}>{indexedIulBalance}</div>
 
           <div className={styles.wealthSubline}>
-            <span>Your net worth as of 2/20/2024</span>
+            <span>Your net worth as of {todayLabel}</span>
             <InfoIcon />
           </div>
 

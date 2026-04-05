@@ -12,9 +12,9 @@ const quickActions = [
 
 const accounts = [
   {
-    name: "PERFBUS SAVINGS",
+    name: "INDEXED IUL SAVINGS",
     suffix: "** 9885",
-    balance: "$120,985.97",
+    balance: "$850,235.89",
   },
   {
     name: "PERFBUS CHECKING",

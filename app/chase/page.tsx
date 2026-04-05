@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 const quickActions = [
@@ -193,52 +190,9 @@ function BottomTabIcon({ icon }: { icon: (typeof bottomTabs)[number]["icon"] }) 
 }
 
 export default function ChasePage() {
-  const [currentTime, setCurrentTime] = useState("19:58");
-
-  useEffect(() => {
-    const formatter = new Intl.DateTimeFormat(undefined, {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    });
-
-    const updateTime = () => {
-      setCurrentTime(formatter.format(new Date()));
-    };
-
-    updateTime();
-
-    const intervalId = window.setInterval(updateTime, 1000 * 30);
-
-    return () => {
-      window.clearInterval(intervalId);
-    };
-  }, []);
-
   return (
     <main className={styles.page}>
       <div className={styles.screen}>
-          <div className={styles.statusRow}>
-            <span className={styles.time}>{currentTime}</span>
-            <div className={styles.dynamicIsland}>
-              <span className={styles.dynamicIslandDot} />
-            </div>
-            <div className={styles.statusIcons}>
-              <span className={styles.signalBars}>
-                <i />
-                <i />
-                <i />
-                <i />
-              </span>
-              <span className={styles.wifiIcon}>
-                <span />
-              </span>
-              <span className={styles.batteryIcon}>
-                <span />
-              </span>
-            </div>
-          </div>
-
           <section className={styles.hero}>
             <div className={styles.topTools}>
               <div className={styles.searchBar}>

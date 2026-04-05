@@ -124,6 +124,20 @@ function ChevronRight() {
   );
 }
 
+function CloseIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.closeIcon}>
+      <path
+        d="M7.5 7.5 16.5 16.5M16.5 7.5l-9 9"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+}
+
 function EyeIcon({ hidden }: { hidden: boolean }) {
   if (hidden) {
     return (
@@ -445,11 +459,11 @@ function OverviewScreen({
 
         <div className={styles.quickActions}>
           {quickActions.map((item) => (
-            <article key={`${item.title}-${item.subtitle}`} className={styles.quickActionCard}>
-              <button type="button" className={styles.dismissButton} aria-label="Dismiss">
-                x
-              </button>
-              <QuickActionIcon icon={item.icon} />
+              <article key={`${item.title}-${item.subtitle}`} className={styles.quickActionCard}>
+                <button type="button" className={styles.dismissButton} aria-label="Dismiss">
+                  <CloseIcon />
+                </button>
+                <QuickActionIcon icon={item.icon} />
               <p className={styles.quickActionText}>
                 <span>{item.title}</span>
                 <span>{item.subtitle}</span>

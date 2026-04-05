@@ -188,12 +188,20 @@
 .dismissButton {
   position: absolute;
   top: 8px;
-  right: 10px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
   border: 0;
+  padding: 0;
   background: transparent;
   color: #c0c3c9;
-  font-size: 22px;
-  line-height: 1;
+  display: inline-grid;
+  place-items: center;
+}
+
+.closeIcon {
+  width: 14px;
+  height: 14px;
 }
 
 .actionIcon {

@@ -12,7 +12,7 @@ const quickActions = [
 
 const accounts = [
   {
-    name: "INDEXED IUL SAVINGS",
+    name: "INDEXED IUL SAVING",
     suffix: "** 9885",
     balance: "$850,235.89",
   },

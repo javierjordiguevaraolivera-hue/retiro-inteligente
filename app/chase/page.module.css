@@ -135,7 +135,11 @@
 .chaseLogo {
   width: 28px;
   height: 28px;
-  color: #fff;
+  object-fit: contain;
+}
+
+.chaseLogoInverted {
+  filter: brightness(0) invert(1);
 }
 
 .plusButton {

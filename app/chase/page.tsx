@@ -50,14 +50,14 @@ const bottomTabs = [
   { label: "Transactions", active: false, icon: "transactions" },
 ] as const;
 
-function ChaseLogo() {
+function ChaseLogo({ inverted = false }: { inverted?: boolean }) {
   return (
     <img
       aria-hidden="true"
       alt=""
       width="96"
       height="96"
-      className={styles.chaseLogo}
+      className={inverted ? `${styles.chaseLogo} ${styles.chaseLogoInverted}` : styles.chaseLogo}
       src="data:image/png;base64,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"
     />
   );
@@ -361,7 +361,7 @@ export default function ChasePage() {
 
           <div className={styles.greetingRow}>
             <div className={styles.greeting}>
-              <ChaseLogo />
+              <ChaseLogo inverted />
               <span>Hi, Alex</span>
             </div>
 

@@ -26,9 +26,6 @@ export default function ChaseChromeSync() {
     let currentColor = "";
     let rafId = 0;
 
-    document.documentElement.classList.add("chase-shell");
-    document.body.classList.add("chase-shell");
-
     const updateChrome = () => {
       const contentStart = document.querySelector<HTMLElement>("[data-chase-content-start]");
       const nextColor =
@@ -70,8 +67,6 @@ export default function ChaseChromeSync() {
       document.documentElement.style.backgroundColor = previousHtmlBackground;
       document.documentElement.style.removeProperty("--chase-top-chrome");
       document.body.style.backgroundColor = previousBodyBackground;
-      document.documentElement.classList.remove("chase-shell");
-      document.body.classList.remove("chase-shell");
     };
   }, []);
 

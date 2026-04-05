@@ -46,11 +46,6 @@ body {
   min-width: 320px;
 }
 
-html.chase-shell,
-body.chase-shell {
-  overscroll-behavior-y: none;
-}
-
 ::selection {
   background: rgba(135, 219, 255, 0.28);
   color: #04111f;

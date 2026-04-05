@@ -376,13 +376,16 @@ function NetWorthChart() {
     <div className={styles.chartFrame}>
       <svg aria-hidden="true" viewBox="0 0 340 220" className={styles.chartSvg}>
         <line x1="30" y1="48" x2="286" y2="48" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="71" x2="286" y2="71" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
         <line x1="30" y1="95" x2="286" y2="95" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="118" x2="286" y2="118" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
         <line x1="30" y1="141" x2="286" y2="141" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="165" x2="286" y2="165" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
         <line x1="30" y1="188" x2="286" y2="188" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
         <line x1="30" y1="24" x2="30" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
         <line x1="30" y1="188" x2="286" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
         <path
-          d="M30 188 L52 181 L74 176 L96 166 L118 148 L136 140 L152 118 L170 130 L188 136 L204 172 L218 166 L230 170 L242 154 L250 176 L264 172 L274 148 L280 98 L286 48"
+          d="M30 188 L52 187 L74 185 L96 181 L118 174 L140 163 L162 149 L184 131 L206 109 L228 84 L248 63 L266 52 L286 48"
           fill="none"
           stroke="#4b7fbc"
           strokeLinecap="round"
@@ -391,17 +394,26 @@ function NetWorthChart() {
         />
         <line x1="286" y1="48" x2="286" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
         <circle cx="286" cy="48" r="4.5" fill="#2f6fb8" />
-        <text x="298" y="58" className={styles.chartAxisLabel}>
+        <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>
           $850.2K
         </text>
-        <text x="298" y="105" className={styles.chartAxisLabel}>
-          $640.0K
+        <text x="298" y="71" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $708.5K
         </text>
-        <text x="298" y="151" className={styles.chartAxisLabel}>
-          $420.0K
+        <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $566.8K
         </text>
-        <text x="298" y="198" className={styles.chartAxisLabel}>
-          $210.0K
+        <text x="298" y="118" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $425.1K
+        </text>
+        <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $283.4K
+        </text>
+        <text x="298" y="165" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $141.7K
+        </text>
+        <text x="298" y="188" dominantBaseline="middle" className={styles.chartAxisLabel}>
+          $0
         </text>
         <text x="30" y="212" className={styles.chartDateLabel}>
           Nov 21

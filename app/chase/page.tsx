@@ -375,9 +375,14 @@ function NetWorthChart() {
   return (
     <div className={styles.chartFrame}>
       <svg aria-hidden="true" viewBox="0 0 340 220" className={styles.chartSvg}>
-        <path d="M26 188H264" fill="none" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="30" y1="48" x2="286" y2="48" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="95" x2="286" y2="95" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="141" x2="286" y2="141" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="188" x2="286" y2="188" stroke="#d4dde8" strokeDasharray="4 5" strokeWidth="1.2" />
+        <line x1="30" y1="24" x2="30" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
+        <line x1="30" y1="188" x2="286" y2="188" stroke="#1c1c1c" strokeWidth="1.2" />
         <path
-          d="M30 176 L66 173 L88 166 L108 158 L126 144 L144 148 L160 140 L174 146 L188 156 L202 152 L216 142 L228 150 L238 136 L250 126 L262 102 L274 72 L286 48"
+          d="M30 188 L52 181 L74 176 L96 166 L118 148 L136 140 L152 118 L170 130 L188 136 L204 172 L218 166 L230 170 L242 154 L250 176 L264 172 L274 148 L280 98 L286 48"
           fill="none"
           stroke="#4b7fbc"
           strokeLinecap="round"
@@ -386,20 +391,16 @@ function NetWorthChart() {
         />
         <line x1="286" y1="48" x2="286" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
         <circle cx="286" cy="48" r="4.5" fill="#2f6fb8" />
-        <rect x="222" y="16" width="108" height="24" rx="3" fill="#585858" />
-        <text x="276" y="32" textAnchor="middle" className={styles.chartTooltip}>
-          Feb 20 $850,235.89
-        </text>
         <text x="298" y="58" className={styles.chartAxisLabel}>
           $850.2K
         </text>
-        <text x="298" y="97" className={styles.chartAxisLabel}>
+        <text x="298" y="105" className={styles.chartAxisLabel}>
           $640.0K
         </text>
-        <text x="298" y="136" className={styles.chartAxisLabel}>
+        <text x="298" y="151" className={styles.chartAxisLabel}>
           $420.0K
         </text>
-        <text x="298" y="175" className={styles.chartAxisLabel}>
+        <text x="298" y="198" className={styles.chartAxisLabel}>
           $210.0K
         </text>
         <text x="30" y="212" className={styles.chartDateLabel}>

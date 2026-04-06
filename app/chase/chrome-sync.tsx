@@ -25,6 +25,7 @@ export default function ChaseChromeSync() {
     const previousBodyBackground = document.body.style.backgroundColor;
     let currentColor = "";
     let rafId = 0;
+    let hiddenAt = 0;
 
     const updateChrome = () => {
       const contentStart = document.querySelector<HTMLElement>("[data-chase-content-start]");
@@ -51,13 +52,39 @@ export default function ChaseChromeSync() {
       rafId = window.requestAnimationFrame(updateChrome);
     };
 
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        hiddenAt = Date.now();
+        return;
+      }
+
+      if (document.visibilityState === "visible" && hiddenAt > 0) {
+        const hiddenFor = Date.now() - hiddenAt;
+        hiddenAt = 0;
+
+        if (hiddenFor > 8000) {
+          window.location.reload();
+        }
+      }
+    };
+
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+
     updateChrome();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("pageshow", onPageShow);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("pageshow", onPageShow);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       cancelAnimationFrame(rafId);
 
       if (previousThemeColor) {

@@ -479,7 +479,7 @@ function OverviewScreen({
               <span className={styles.badge}>1</span>
             </button>
 
-              <div className={styles.avatar} aria-label="Alex">
+              <div className={styles.avatar} aria-label="Maria">
                 A
               </div>
           </div>
@@ -488,7 +488,7 @@ function OverviewScreen({
         <div className={styles.greetingRow}>
             <div className={styles.greeting}>
               <ChaseLogo inverted />
-              <span>Hi, Alex</span>
+              <span>Hi, Maria</span>
             </div>
 
           <button type="button" className={styles.plusButton} aria-label="Add">

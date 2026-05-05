@@ -14,7 +14,7 @@ const accounts = [
   {
     name: "INDEXED IUL SAVING",
     suffix: "** 9885",
-    balance: "$850,235.89",
+    balance: "$250,000.00",
     detail: true,
   },
   {
@@ -26,6 +26,14 @@ const accounts = [
 ] as const;
 
 const indexedIulBalance = accounts[0].balance;
+
+const closureNotice = {
+  title: "Su cuenta se ha cerrado",
+  eyebrow: "Ud tendra mejores beneficios en su retiro",
+  body: "Usted eligio migrar estos fondos a un seguro Indexed Universal Life (IUL).",
+  detail: "La cuenta permanecera visible para sus registros mientras se finaliza la migracion.",
+  timestamp: "Hoy",
+} as const;
 
 const offerCards = [
   { title: "Office\nDepot", accent: "red" },
@@ -306,6 +314,15 @@ function InfoIcon() {
   );
 }
 
+function StatusAlertIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.statusAlertIcon}>
+      <circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M8.7 12.4 10.9 14.6 15.8 9.5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.9" />
+    </svg>
+  );
+}
+
 function PlanTrackIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.tabIcon}>
@@ -415,22 +432,22 @@ function NetWorthChart() {
         <line x1="286" y1="48" x2="286" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
         <circle cx="286" cy="48" r="4.5" fill="#2f6fb8" />
         <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $850.2K
+          $250K
         </text>
         <text x="298" y="71" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $708.5K
+          $208.3K
         </text>
         <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $566.8K
+          $166.7K
         </text>
         <text x="298" y="118" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $425.1K
+          $125K
         </text>
         <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $283.4K
+          $83.3K
         </text>
         <text x="298" y="165" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $141.7K
+          $41.7K
         </text>
         <text x="298" y="188" dominantBaseline="middle" className={styles.chartAxisLabel}>
           $0
@@ -451,6 +468,40 @@ function NetWorthChart() {
           Year 5
         </text>
       </svg>
+    </div>
+  );
+}
+
+function AccountClosedModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div className={styles.noticeBackdrop} role="presentation">
+      <section className={styles.noticeSheet} role="dialog" aria-modal="true" aria-labelledby="account-closed-title">
+        <button type="button" className={styles.noticeCloseButton} aria-label="Cerrar actualizacion de cuenta" onClick={onClose}>
+          <CloseIcon />
+        </button>
+
+        <div className={styles.noticeHeader}>
+          <div className={styles.noticeIconWrap}>
+            <StatusAlertIcon />
+          </div>
+          <span className={styles.noticeCongrats}>Felicidades</span>
+        </div>
+
+        <p className={styles.noticeEyebrow}>{closureNotice.eyebrow}</p>
+        <h2 id="account-closed-title" className={styles.noticeTitle}>
+          {closureNotice.title}
+        </h2>
+        <p className={styles.noticeBody}>{closureNotice.body}</p>
+
+        <div className={styles.noticeDetailRow}>
+          <span>{closureNotice.timestamp}</span>
+          <span>{closureNotice.detail}</span>
+        </div>
+
+        <button type="button" className={styles.noticePrimaryButton} onClick={onClose}>
+          Entendido
+        </button>
+      </section>
     </div>
   );
 }
@@ -730,6 +781,7 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
 export default function ChasePage() {
   const [screen, setScreen] = useState<Screen>("overview");
   const [visibleBalances, setVisibleBalances] = useState<Record<string, boolean>>({});
+  const [showClosureNotice, setShowClosureNotice] = useState(true);
 
   const toggleBalance = (accountName: string) => {
     setVisibleBalances((current) => ({
@@ -752,6 +804,7 @@ export default function ChasePage() {
             toggleBalance={toggleBalance}
           />
         )}
+        {showClosureNotice ? <AccountClosedModal onClose={() => setShowClosureNotice(false)} /> : null}
       </div>
     </main>
   );

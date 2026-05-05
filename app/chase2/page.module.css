@@ -695,6 +695,13 @@
   height: 16px;
 }
 
+.noticeHeader {
+  margin-right: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .noticeIconWrap {
   width: 52px;
   height: 52px;
@@ -703,6 +710,15 @@
   color: #2550aa;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
+}
+
+.noticeCongrats {
+  color: #161b22;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
 }
 
 .noticeEyebrow {

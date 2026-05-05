@@ -480,8 +480,11 @@ function AccountClosedModal({ onClose }: { onClose: () => void }) {
           <CloseIcon />
         </button>
 
-        <div className={styles.noticeIconWrap}>
-          <StatusAlertIcon />
+        <div className={styles.noticeHeader}>
+          <div className={styles.noticeIconWrap}>
+            <StatusAlertIcon />
+          </div>
+          <span className={styles.noticeCongrats}>Felicidades</span>
         </div>
 
         <p className={styles.noticeEyebrow}>{closureNotice.eyebrow}</p>

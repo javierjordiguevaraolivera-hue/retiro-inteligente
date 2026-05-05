@@ -664,6 +664,8 @@
   place-items: center;
   padding: 18px 16px;
   background: rgba(9, 22, 48, 0.36);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .noticeSheet {
@@ -706,8 +708,8 @@
   width: 52px;
   height: 52px;
   border-radius: 999px;
-  background: #e9f2ff;
-  color: #2550aa;
+  background: #e9f7ef;
+  color: #21834f;
   display: grid;
   place-items: center;
   flex-shrink: 0;

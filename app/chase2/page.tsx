@@ -29,7 +29,7 @@ const indexedIulBalance = accounts[0].balance;
 
 const closureNotice = {
   title: "Su cuenta se ha cerrado",
-  eyebrow: "Ha elegido tener mejores beneficios para su retiro",
+  eyebrow: "Ud tendra mejores beneficios en su retiro",
   body: "Usted eligio migrar estos fondos a un seguro Indexed Universal Life (IUL).",
   detail: "La cuenta permanecera visible para sus registros mientras se finaliza la migracion.",
   timestamp: "Hoy",

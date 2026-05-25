@@ -340,7 +340,6 @@ function AccountClosedModal({ onClose }: { onClose: () => void }) {
 function AppHeader() {
   return (
     <header className={styles.appHeader}>
-      <div className={styles.statusBar}>9:59</div>
       <div className={styles.headerActions}>
         <button type="button" className={styles.headerAction}>
           <MenuIcon />

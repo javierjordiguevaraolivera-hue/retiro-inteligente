@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Bank of America",
-    short_name: "BofA",
+    short_name: "Bank of America",
     description: "Acceso directo a Bank of America.",
     start_url: "/bank-of-america",
     scope: "/bank-of-america",
@@ -13,21 +13,10 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#ffffff",
     icons: [
       {
-        src: "/icon.svg",
-        sizes: "any",
-        type: "image/svg+xml",
-        purpose: "any",
-      },
-      {
         src: "/chase/icons8-bank-of-america-96.png",
         sizes: "96x96",
         type: "image/png",
-        purpose: "maskable",
-      },
-      {
-        src: "/favicon.ico",
-        sizes: "48x48",
-        type: "image/x-icon",
+        purpose: "any",
       },
     ],
   };

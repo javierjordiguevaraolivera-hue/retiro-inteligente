@@ -18,8 +18,8 @@ export const metadata: Metadata = {
   description: "Acceso directo a Bank of America.",
   applicationName: "Bank of America",
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
+    icon: "/chase/icons8-bank-of-america-96.png",
+    shortcut: "/chase/icons8-bank-of-america-96.png",
     apple: "/chase/icons8-bank-of-america-96.png",
   },
 };

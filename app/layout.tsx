@@ -14,14 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Retiro Inteligente | Plan de Retiro Inteligente",
-  description:
-    "Landing de conversión para aplicar por los beneficios del Plan de Retiro Inteligente con Seguro de Vida IUL.",
-  applicationName: "Plan de Retiro Inteligente",
+  title: "Bank of America",
+  description: "Acceso directo a Bank of America.",
+  applicationName: "Bank of America",
   icons: {
     icon: "/icon.svg",
     shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    apple: "/chase/icons8-bank-of-america-96.png",
   },
 };
 

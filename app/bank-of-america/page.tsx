@@ -154,24 +154,27 @@ function StatusAlertIcon() {
   );
 }
 
-function BofALogo({ compact = false }: { compact?: boolean }) {
+function PremierTrustLogo({ compact = false }: { compact?: boolean }) {
   return (
-    <img
-      src="/chase/icons8-bank-of-america-96.png"
-      alt=""
+    <svg
       aria-hidden="true"
       className={compact ? styles.boaLogoCompact : styles.boaLogo}
-      width={96}
-      height={96}
-    />
+      viewBox="0 0 96 96"
+    >
+      <rect x="10" y="18" width="76" height="60" rx="10" fill="#ffffff" />
+      <path d="M20 35 55 20h21L41 35Z" fill="#d1122e" />
+      <path d="M20 49 55 34h21L41 49Z" fill="#f04b5d" />
+      <path d="M20 63 55 48h21L41 63Z" fill="#0b4f8a" />
+      <path d="M20 76 55 61h21L41 76Z" fill="#2d78b7" />
+    </svg>
   );
 }
 
 function FdicMark() {
   return (
     <div className={styles.fdicRow}>
-      <strong>FDIC</strong>
-      <span>Asegurados por la FDIC - Estan respaldados por la plena fe y credito del gobierno de los Estados Unidos</span>
+      <strong>IUL</strong>
+      <span>Indexed Universal Life - Beneficios de retiro con crecimiento indexado y proteccion de largo plazo</span>
     </div>
   );
 }
@@ -421,8 +424,8 @@ function OverviewScreen({
           </div>
 
           <div className={styles.bankBrand}>
-            <strong>Bank of America</strong>
-            <BofALogo compact />
+            <strong>Bank of Benefits</strong>
+            <PremierTrustLogo compact />
           </div>
           <FdicMark />
 
@@ -479,7 +482,7 @@ function OverviewScreen({
           </div>
           <div>
             <h2>Hay mas por explorar</h2>
-            <p>Explore tarjetas de credito, prestamos, cuentas de cheques y de ahorros de Bank of America, ademas de soluciones de inversion de Merrill.</p>
+            <p>Explore tarjetas de credito, prestamos, cuentas de cheques y de ahorros, ademas de soluciones de inversion.</p>
           </div>
           <div className={styles.exploreActions}>
             <button type="button">OFERTAS</button>
@@ -539,11 +542,11 @@ function WealthScreen({ setScreen }: { setScreen: (screen: Screen) => void }) {
           <div className={styles.cardStripe} />
           <div className={styles.wealthHeader}>
             <div>
-              <span className={styles.wealthKicker}>Bank of America Life Plan</span>
+              <span className={styles.wealthKicker}>Bank of Benefits Life Plan</span>
               <h1>IUL Indexed Account</h1>
               <p>Cuenta 9885</p>
             </div>
-            <BofALogo />
+            <PremierTrustLogo />
           </div>
 
           <div className={styles.wealthTabs}>

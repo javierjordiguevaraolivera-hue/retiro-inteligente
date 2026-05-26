@@ -127,46 +127,18 @@
   position: relative;
   width: 41px;
   height: 41px;
-  border: 0;
+  border: 1.7px solid #c41230;
   border-radius: 999px;
-  background: #d7193f;
-  color: #ffffff;
+  background: transparent;
+  color: #c41230;
   display: grid;
   place-items: center;
   overflow: visible;
 }
 
-.messageLines {
-  position: relative;
-  width: 27px;
-  height: 22px;
-  display: block;
-  transform: rotate(-12deg);
-}
-
-.messageLines span {
-  position: absolute;
-  right: 1px;
-  display: block;
-  height: 4px;
-  border-radius: 999px;
-  background: #ffffff;
-  transform: skewX(-20deg);
-}
-
-.messageLines span:nth-child(1) {
-  top: 3px;
-  width: 20px;
-}
-
-.messageLines span:nth-child(2) {
-  top: 9px;
-  width: 26px;
-}
-
-.messageLines span:nth-child(3) {
-  top: 15px;
-  width: 18px;
+.bellIcon {
+  width: 24px;
+  height: 24px;
 }
 
 .messageBadge {
@@ -234,7 +206,7 @@
 
 .cardStripe {
   height: 9px;
-  background: linear-gradient(135deg, #c41230 0 61%, #003b70 61% 100%);
+  background: #c41230;
 }
 
 .cardHeader {

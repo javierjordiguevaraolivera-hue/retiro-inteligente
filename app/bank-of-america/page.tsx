@@ -68,6 +68,21 @@ function SearchIcon({ className = styles.inlineIcon }: { className?: string }) {
   );
 }
 
+function BellIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.bellIcon}>
+      <path
+        d="M7.2 10.4c0-3 1.9-5.3 4.8-5.3s4.8 2.3 4.8 5.3v3.1l1.5 2.4H5.7l1.5-2.4v-3.1Z"
+        fill="none"
+        stroke="currentColor"
+        strokeLinejoin="round"
+        strokeWidth="1.8"
+      />
+      <path d="M10.1 18.2c.4.8 1.1 1.2 1.9 1.2s1.5-.4 1.9-1.2" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
 function MenuIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24" className={styles.headerIcon}>
@@ -390,11 +405,7 @@ function OverviewScreen({
             <span>Como podemos ayudar?</span>
           </div>
           <button type="button" className={styles.messageButton} aria-label="Mensajes">
-            <span className={styles.messageLines} aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </span>
+            <BellIcon />
             <span className={styles.messageBadge}>4</span>
           </button>
         </div>

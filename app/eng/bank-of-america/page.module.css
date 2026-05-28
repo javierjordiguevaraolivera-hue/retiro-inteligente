@@ -1,0 +1,883 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+  background: #f2f2f2;
+  color: #111111;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+.screen {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background: #f2f2f2;
+}
+
+.screen::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--boa-top-chrome, #ffffff);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.appHeader {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #ffffff;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.13);
+}
+
+.headerActions {
+  min-height: 64px;
+  padding: 8px 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.headerSpacer {
+  flex: 1;
+}
+
+.headerAction {
+  min-width: 44px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #686868;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.headerIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.topTabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #f2f2f2;
+}
+
+.topTab,
+.topTabActive {
+  height: 48px;
+  border: 0;
+  background: #ffffff;
+  color: #5d5d5d;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.topTabActive {
+  color: #c41230;
+  border-bottom: 3px solid #c41230;
+}
+
+.content,
+.wealthContent {
+  display: grid;
+  gap: 14px;
+  padding: 16px 14px 116px;
+}
+
+.searchRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchBar {
+  min-width: 0;
+  height: 44px;
+  border-radius: 13px;
+  background: #e9e9ee;
+  color: #777777;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.inlineIcon {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+
+.messageButton {
+  position: relative;
+  width: 41px;
+  height: 41px;
+  border: 1.7px solid #c41230;
+  border-radius: 999px;
+  background: transparent;
+  color: #c41230;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+}
+
+.bellIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.messageBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: #1767c9;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.profileCard,
+.accountsCard,
+.exploreCard,
+.dealsCard,
+.wealthCard,
+.wealthActions,
+.infoCard {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.profileRow {
+  width: 100%;
+  min-height: 86px;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 18px 20px;
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-align: left;
+}
+
+.profileRow:last-child {
+  border-bottom: 0;
+}
+
+.profileRow h1,
+.profileRow h2 {
+  margin: 0;
+  color: #050505;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.profileRow p {
+  margin: 8px 0 0;
+  color: #666666;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.cardStripe {
+  height: 9px;
+  background: #c41230;
+}
+
+.cardHeader {
+  min-height: 62px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardHeader h2 {
+  margin: 0;
+  color: #050505;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.bankBrand {
+  padding: 20px 24px 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #030303;
+  font-size: 15px;
+}
+
+.boaLogo,
+.boaLogoCompact {
+  width: 52px;
+  height: 52px;
+  display: block;
+  object-fit: contain;
+}
+
+.boaLogoCompact {
+  width: 38px;
+  height: 22px;
+}
+
+.fdicRow {
+  padding: 0 24px 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.fdicRow strong {
+  color: #0b4e88;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.fdicRow span {
+  color: #333333;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.18;
+}
+
+.accountsList {
+  padding: 0 20px 16px;
+}
+
+.accountRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 9px;
+  cursor: pointer;
+}
+
+.accountMeta {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+}
+
+.accountName {
+  color: #252525;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.16;
+}
+
+.accountBalanceWrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.eyeButton {
+  width: 21px;
+  height: 21px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #858585;
+  display: inline-grid;
+  place-items: center;
+  opacity: 0.72;
+}
+
+.eyeIcon {
+  width: 17px;
+  height: 17px;
+}
+
+.accountBalance {
+  color: #0b0b0b;
+  font-size: 19px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.chevron {
+  width: 22px;
+  height: 22px;
+  color: #6d6d6d;
+  flex-shrink: 0;
+}
+
+.exploreCard {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  padding-top: 20px;
+}
+
+.exploreIcon {
+  width: 42px;
+  height: 58px;
+  margin-left: 20px;
+  border: 3px solid #003b70;
+  border-radius: 5px;
+  transform: rotate(-10deg);
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 8px;
+}
+
+.exploreIcon span {
+  height: 3px;
+  border-radius: 3px;
+  background: #d7193f;
+}
+
+.exploreIcon span:nth-child(2) {
+  background: #a7b8ce;
+}
+
+.exploreCard h2 {
+  margin: 0;
+  color: #090909;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.exploreCard p {
+  margin: 4px 14px 18px 0;
+  color: #5f5f5f;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.exploreActions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid #e5e5e5;
+}
+
+.exploreActions button {
+  height: 54px;
+  border: 0;
+  border-right: 1px solid #e5e5e5;
+  background: #ffffff;
+  color: #0063b1;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.exploreActions button:last-child {
+  border-right: 0;
+}
+
+.loanBanner {
+  min-height: 108px;
+  padding: 16px 18px 14px 0;
+  background: #e8183d;
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 12px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.loanBanner p {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.05;
+}
+
+.loanBanner strong {
+  display: block;
+  font-size: 30px;
+  line-height: 1.05;
+}
+
+.loanBanner button {
+  grid-column: 2;
+  justify-self: end;
+  min-width: 96px;
+  height: 32px;
+  border: 0;
+  border-radius: 3px;
+  background: #003b70;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.carGraphic {
+  width: 132px;
+  height: 76px;
+  margin-left: -21px;
+  background: transparent;
+  position: relative;
+  align-self: end;
+}
+
+.carGraphic::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 4px;
+  bottom: 10px;
+  height: 47px;
+  border-radius: 19px 19px 3px 3px;
+  background: #003b70;
+  box-shadow: inset 0 -15px 0 #1239c8;
+}
+
+.carGraphic::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 8px;
+  width: 63px;
+  height: 30px;
+  border-radius: 8px 8px 2px 2px;
+  background: #edf6ff;
+  clip-path: polygon(0 0, 82% 0, 100% 100%, 0 100%);
+}
+
+.carWindow {
+  position: absolute;
+  left: 68px;
+  top: 8px;
+  width: 18px;
+  height: 30px;
+  background: #003b70;
+  z-index: 2;
+}
+
+.carLight {
+  position: absolute;
+  right: 10px;
+  bottom: 28px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #edf6ff;
+  z-index: 2;
+}
+
+.carStripe {
+  position: absolute;
+  left: 0;
+  right: 16px;
+  bottom: 29px;
+  height: 5px;
+  background: #5e7cff;
+  z-index: 2;
+}
+
+.dealsCard {
+  padding: 20px;
+}
+
+.dealsCard h2 {
+  margin: 0;
+  color: #555555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.dealsCard p {
+  margin: 8px 0 15px;
+  color: #5f5f5f;
+  font-size: 14px;
+}
+
+.dealsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dealsGrid span {
+  min-height: 54px;
+  border-radius: 9px;
+  background: #f4f7fb;
+  color: #003b70;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.backLink {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  color: #0063b1;
+  font-size: 16px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.backLink span {
+  font-size: 26px;
+  line-height: 0.7;
+}
+
+.wealthHeader {
+  padding: 18px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.wealthKicker {
+  color: #656565;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wealthHeader h1 {
+  margin: 4px 0 0;
+  color: #070707;
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.wealthHeader p {
+  margin: 4px 0 0;
+  color: #6f6f6f;
+  font-size: 13px;
+}
+
+.wealthTabs {
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.wealthTabs button {
+  height: 46px;
+  border: 0;
+  background: transparent;
+  color: #6a6a6a;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.wealthTabActive {
+  color: #003b70 !important;
+  border-bottom: 3px solid #003b70 !important;
+}
+
+.wealthBalance {
+  padding: 18px 20px 0;
+  color: #080808;
+  font-size: 29px;
+  font-weight: 800;
+}
+
+.wealthSubline {
+  margin: 6px 20px 0;
+  color: #666666;
+  font-size: 13px;
+}
+
+.chartFrame {
+  padding: 10px 14px 18px;
+}
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chartAxisLabel {
+  fill: #5b5b5b;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.chartDateLabel {
+  fill: #3f3f3f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.wealthActions {
+  padding: 17px 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.wealthActionButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  color: #005eb8;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: pre-line;
+}
+
+.wealthActionCircle {
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  border: 2px solid #b6c6d9;
+  display: grid;
+  place-items: center;
+}
+
+.wealthActionIcon {
+  width: 27px;
+  height: 27px;
+}
+
+.wealthInfoList {
+  display: grid;
+  gap: 12px;
+}
+
+.infoCard {
+  padding: 16px 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.infoCard h3 {
+  margin: 0;
+  color: #111111;
+  font-size: 15px;
+}
+
+.infoCard p {
+  margin: 4px 0 0;
+  color: #666666;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.noticeBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 18px 16px;
+  background: rgba(3, 8, 18, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.noticeSheet {
+  position: relative;
+  width: min(100%, 390px);
+  border-radius: 18px;
+  background: #ffffff;
+  color: #1f2630;
+  padding: 22px 20px 18px;
+  box-shadow: 0 22px 52px rgba(8, 24, 54, 0.28);
+}
+
+.noticeCloseButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 999px;
+  background: #f1f4f8;
+  color: #526173;
+  display: grid;
+  place-items: center;
+}
+
+.closeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.noticeHeader {
+  margin-right: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noticeIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #e9f7ef;
+  color: #21834f;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.statusAlertIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.noticeCongrats {
+  color: #161b22;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.noticeEyebrow {
+  margin: 18px 42px 0 0;
+  color: #5d6675;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.noticeTitle {
+  margin: 5px 42px 0 0;
+  color: #161b22;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.12;
+}
+
+.noticeBody {
+  margin: 10px 0 0;
+  color: #343b46;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.42;
+}
+
+.noticeDetailRow {
+  margin-top: 14px;
+  border-top: 1px solid #e7ebf1;
+  border-bottom: 1px solid #e7ebf1;
+  padding: 12px 0;
+  display: grid;
+  gap: 5px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.noticeDetailRow span:first-child {
+  color: #1f2630;
+}
+
+.noticePrimaryButton {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: #c41230;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: calc(82px + env(safe-area-inset-bottom, 0px));
+  padding: 9px 8px calc(env(safe-area-inset-bottom, 0px) + 8px);
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  border-left: 0;
+  border-right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+  z-index: 55;
+  box-shadow: 0 -2px 7px rgba(0, 0, 0, 0.06);
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #5d5d5d;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.tabActive {
+  color: #0063b1;
+}
+
+.tabIcon {
+  width: 31px;
+  height: 31px;
+}
+
+@media (max-width: 390px) {
+  .headerActions {
+    padding-inline: 18px;
+    gap: 20px;
+  }
+
+  .topTab,
+  .topTabActive {
+    font-size: 18px;
+  }
+
+  .searchBar {
+    font-size: 17px;
+  }
+
+  .accountBalance {
+    font-size: 17px;
+  }
+
+  .loanBanner p {
+    font-size: 22px;
+  }
+
+  .loanBanner strong {
+    font-size: 27px;
+  }
+}

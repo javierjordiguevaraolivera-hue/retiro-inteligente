@@ -1,0 +1,896 @@
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 0;
+  background: #f8f8f8;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  color: #0b2450;
+}
+
+.screen {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, #2550aa 0%, #1d47a4 28%, #1b49aa 47%, #f8f8f8 47.2%, #f8f8f8 100%);
+}
+
+.screenWealth {
+  background:
+    linear-gradient(180deg, #2550aa 0%, #1d47a4 15%, #1b49aa 28%, #f7fbff 28.2%, #f7fbff 100%);
+}
+
+.screen::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--chase-top-chrome, #2550aa);
+  pointer-events: none;
+  z-index: 40;
+}
+
+.hero {
+  padding: 22px 16px 0;
+  overflow: hidden;
+}
+
+.topTools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchBar {
+  flex: 1;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 17px;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.inlineIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconButton {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.topIcon,
+.plusIcon,
+.chevron {
+  width: 100%;
+  height: 100%;
+}
+
+.badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: #ffdb45;
+  color: #151515;
+  font-size: 10px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff 0%, #edf2ff 100%);
+  color: #2550aa;
+  font-size: 16px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.62);
+}
+
+.greetingRow {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.chaseLogo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.chaseLogoInverted {
+  filter: brightness(0) invert(1);
+}
+
+.plusButton {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.quickActions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+  margin-right: -16px;
+  padding-right: 0;
+}
+
+.quickActions::-webkit-scrollbar {
+  display: none;
+}
+
+.quickActionCard {
+  flex: 0 0 calc((100% - 30px) / 3.15);
+  min-height: 116px;
+  border-radius: 14px;
+  background: #fff;
+  color: #294278;
+  padding: 14px 14px 12px;
+  box-shadow: 0 8px 18px rgba(22, 43, 85, 0.08);
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.dismissButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #c0c3c9;
+  display: inline-grid;
+  place-items: center;
+}
+
+.closeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.actionIcon {
+  width: 31px;
+  height: 31px;
+  color: #2c58a9;
+}
+
+.quickActionText {
+  margin-top: 18px;
+  display: grid;
+  gap: 1px;
+  font-size: 13px;
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.content {
+  display: grid;
+  gap: 12px;
+  padding: 16px 16px 112px;
+}
+
+.wealthHero {
+  padding: 24px 16px 0;
+}
+
+.wealthTitle {
+  margin: 0;
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.wealthContent {
+  padding: 18px 16px 124px;
+}
+
+.wealthCard {
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 8px 18px rgba(16, 24, 40, 0.08);
+  border: 1px solid #dfe9f4;
+  padding: 18px 18px 16px;
+}
+
+.wealthTabs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.wealthTab {
+  border: 0;
+  padding: 0 0 8px;
+  background: transparent;
+  color: #8a807a;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.wealthTabActive {
+  color: #2f6fb8;
+  border-bottom: 4px solid #2f6fb8;
+}
+
+.wealthBalance {
+  margin-top: 18px;
+  color: #201814;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.wealthSubline {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #55534f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.infoIcon {
+  width: 18px;
+  height: 18px;
+  color: #4c84c2;
+}
+
+.statusAlertIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.chartFrame {
+  margin-top: 12px;
+}
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chartTooltip {
+  fill: #ffffff;
+  font-size: 8.5px;
+  font-weight: 600;
+}
+
+.chartAxisLabel {
+  fill: #5b5b5b;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.chartDateLabel {
+  fill: #3f3f3f;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.chartTableLink {
+  margin: 8px auto 0;
+  border: 0;
+  background: transparent;
+  color: #2f72ba;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.tableIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.wealthActions {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(16, 24, 40, 0.06);
+  padding: 18px 10px 12px;
+}
+
+.wealthInfoList {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.wealthActionButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+}
+
+.wealthActionCircle {
+  width: 58px;
+  height: 58px;
+  border-radius: 999px;
+  border: 2px solid #74a7d7;
+  color: #2f74bc;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f2f7fd 100%);
+}
+
+.wealthActionIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.wealthActionLabel {
+  white-space: pre-line;
+  text-align: center;
+  color: #2b6eae;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.accountsCard,
+.offerSection,
+.infoCard {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(16, 24, 40, 0.08);
+}
+
+.accountsCard {
+  padding: 20px 16px 18px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: #1c1f24;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.accountsList {
+  margin-top: 14px;
+}
+
+.accountRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.accountRowBorder {
+  border-top: 1px solid #eceef3;
+}
+
+.accountMeta {
+  min-width: 0;
+}
+
+.accountNameWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.accountName {
+  color: #22262d;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.accountSuffix {
+  display: block;
+  margin-top: 2px;
+  color: #b3b5bd;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.chevron {
+  width: 15px;
+  height: 15px;
+  color: #2d58ac;
+}
+
+.accountBalanceWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.eyeButton {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #5d739f;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.eyeIcon {
+  width: 21px;
+  height: 21px;
+}
+
+.accountBalance {
+  color: #183b7b;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.openAccountButton {
+  margin-top: 10px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #2355a8;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.openPlus {
+  font-size: 24px;
+  line-height: 0.8;
+}
+
+.offerSection {
+  padding: 14px 14px 12px;
+}
+
+.offerHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.offerTitle {
+  margin: 0;
+  color: #22262d;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.offerSubtitle {
+  margin: 2px 0 0;
+  color: #7a7f89;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.offerLink {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #2b56ab;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  white-space: nowrap;
+}
+
+.offerCards {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.offerCard {
+  position: relative;
+  width: 58px;
+  height: 52px;
+  border-radius: 11px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.offerRed {
+  background: linear-gradient(135deg, #e31f26 0%, #b80c14 100%);
+  color: #fff;
+}
+
+.offerDark {
+  background: linear-gradient(135deg, #191d22 0%, #404448 100%);
+  color: #8efe59;
+}
+
+.offerLight {
+  background: linear-gradient(135deg, #ffffff 0%, #f2f5fb 100%);
+  color: #2675d5;
+  border: 1px solid #ebeff7;
+}
+
+.offerBadge {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 18px;
+  height: 18px;
+  border-radius: 0 0 0 9px;
+  background: #ffd83d;
+  color: #141414;
+  font-size: 10px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.offerText {
+  white-space: pre-line;
+  font-size: 10px;
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.infoList {
+  display: grid;
+  gap: 10px;
+}
+
+.infoCard {
+  padding: 15px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.infoCopy {
+  min-width: 0;
+}
+
+.infoTitle {
+  margin: 0;
+  color: #23272f;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.infoDescription {
+  margin: 3px 0 0;
+  color: #777c87;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.faceIdOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(246, 248, 252, 0.68);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  animation: faceIdFadeIn 180ms ease-out both;
+}
+
+.faceIdPanel {
+  width: min(30vw, 118px);
+  min-width: 96px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 44px rgba(20, 35, 68, 0.18);
+}
+
+.faceIdVideo {
+  width: 88%;
+  height: 88%;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: normal;
+}
+
+@keyframes faceIdFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.noticeBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 18px 16px;
+  background: rgba(9, 22, 48, 0.36);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.noticeSheet {
+  position: relative;
+  width: min(100%, 390px);
+  border-radius: 22px;
+  background: #ffffff;
+  color: #1f2630;
+  padding: 22px 20px 18px;
+  box-shadow: 0 22px 52px rgba(8, 24, 54, 0.28);
+}
+
+.noticeCloseButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 999px;
+  background: #f1f4f8;
+  color: #526173;
+  display: grid;
+  place-items: center;
+}
+
+.noticeCloseButton .closeIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.noticeHeader {
+  margin-right: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.noticeIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: #e9f7ef;
+  color: #21834f;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.noticeCongrats {
+  color: #161b22;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.noticeEyebrow {
+  margin: 18px 42px 0 0;
+  color: #5d6675;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.noticeTitle {
+  margin: 5px 42px 0 0;
+  color: #161b22;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.noticeBody {
+  margin: 10px 0 0;
+  color: #343b46;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+}
+
+.noticeDetailRow {
+  margin-top: 14px;
+  border-top: 1px solid #e7ebf1;
+  border-bottom: 1px solid #e7ebf1;
+  padding: 12px 0;
+  display: grid;
+  gap: 5px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.noticeDetailRow span:first-child {
+  color: #1f2630;
+}
+
+.noticePrimaryButton {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: #2550aa;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: calc(72px + env(safe-area-inset-bottom, 0px));
+  padding: 8px 18px calc(env(safe-area-inset-bottom, 0px) + 4px);
+  background: #fff;
+  border-top: 1px solid #edf0f5;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  z-index: 20;
+  box-shadow: 0 -10px 24px rgba(16, 24, 40, 0.06);
+}
+
+.bottomNavWide {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding-inline: 10px;
+}
+
+.tab {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  color: #a0a5b0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tabActive {
+  color: #2c57ad;
+}
+
+.tabIconWrap {
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+}
+
+.tabIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.tabDot {
+  margin-top: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #2c57ad;
+}
+
+@media (max-width: 390px) {
+  .quickActions {
+    gap: 8px;
+  }
+
+  .quickActionCard {
+    flex-basis: calc((100% - 24px) / 3.12);
+    min-height: 112px;
+    padding-inline: 12px;
+  }
+
+  .accountBalance {
+    font-size: 22px;
+  }
+}

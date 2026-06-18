@@ -9,7 +9,7 @@ const SURVEY_HREF = "/survey";
 const PRELANDING_SOURCE_SESSION_KEY = "ri-prelanding-source";
 
 const points = [
-  "Obtén hasta $850,000",
+  "Obtén hasta $350,000",
   "Beneficios para tu familia",
   "Accede a tu dinero cuando lo necesites",
 ];

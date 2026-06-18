@@ -7,7 +7,7 @@ const accounts = [
   {
     name: "IUL Indexed Account",
     product: "IUL Indexed Account",
-    balance: "$850,235.89",
+    balance: "$350,235.89",
     detail: true,
   },
   {
@@ -313,7 +313,7 @@ function NetWorthChart() {
         <line x1="30" y1="188" x2="286" y2="188" stroke="#222" strokeWidth="1.2" />
         <path d="M30 188 L52 187 L74 185 L96 181 L118 174 L140 163 L162 149 L184 131 L206 109 L228 84 L248 63 L266 52 L286 48" fill="none" stroke="#003b70" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
         <circle cx="286" cy="48" r="4.5" fill="#d0021b" />
-        <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>$850.2K</text>
+        <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>$350.2K</text>
         <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>$566.8K</text>
         <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>$283.4K</text>
         <text x="298" y="188" dominantBaseline="middle" className={styles.chartAxisLabel}>$0</text>

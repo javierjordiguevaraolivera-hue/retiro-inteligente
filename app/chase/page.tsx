@@ -14,7 +14,7 @@ const accounts = [
   {
     name: "INDEXED IUL SAVING",
     suffix: "** 9885",
-    balance: "$58,300.00",
+    balance: "$260,000.00",
     detail: true,
   },
   {
@@ -415,22 +415,22 @@ function NetWorthChart() {
         <line x1="286" y1="48" x2="286" y2="188" stroke="#8b8b8b" strokeDasharray="4 4" strokeWidth="1.4" />
         <circle cx="286" cy="48" r="4.5" fill="#2f6fb8" />
         <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $250K
+          $260K
         </text>
         <text x="298" y="71" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $208.3K
+          $216.7K
         </text>
         <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $166.7K
+          $173.3K
         </text>
         <text x="298" y="118" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $125K
+          $130K
         </text>
         <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $83.3K
+          $86.7K
         </text>
         <text x="298" y="165" dominantBaseline="middle" className={styles.chartAxisLabel}>
-          $41.7K
+          $43.3K
         </text>
         <text x="298" y="188" dominantBaseline="middle" className={styles.chartAxisLabel}>
           $0

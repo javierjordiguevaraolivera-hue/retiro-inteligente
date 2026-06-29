@@ -7,7 +7,7 @@ const accounts = [
   {
     name: "IUL Indexed Account",
     product: "IUL Indexed Account",
-    balance: "$350,235.89",
+    balance: "$260,000.00",
     detail: true,
   },
   {
@@ -313,9 +313,9 @@ function NetWorthChart() {
         <line x1="30" y1="188" x2="286" y2="188" stroke="#222" strokeWidth="1.2" />
         <path d="M30 188 L52 187 L74 185 L96 181 L118 174 L140 163 L162 149 L184 131 L206 109 L228 84 L248 63 L266 52 L286 48" fill="none" stroke="#003b70" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" />
         <circle cx="286" cy="48" r="4.5" fill="#d0021b" />
-        <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>$350.2K</text>
-        <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>$566.8K</text>
-        <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>$283.4K</text>
+        <text x="298" y="48" dominantBaseline="middle" className={styles.chartAxisLabel}>$260K</text>
+        <text x="298" y="95" dominantBaseline="middle" className={styles.chartAxisLabel}>$173.3K</text>
+        <text x="298" y="141" dominantBaseline="middle" className={styles.chartAxisLabel}>$86.7K</text>
         <text x="298" y="188" dominantBaseline="middle" className={styles.chartAxisLabel}>$0</text>
         <text x="30" y="212" className={styles.chartDateLabel}>Year 1</text>
         <text x="158" y="212" textAnchor="middle" className={styles.chartDateLabel}>Year 3</text>
